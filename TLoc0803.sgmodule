@@ -43,7 +43,7 @@ youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.c
 
 #SoundCloudGo+
 #hostname= api-mobile.soundcloud.com
-SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Soundcloudpremium.js
+SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/tloc08vn/Module_Ios/refs/heads/main/Locket_Unlocked.js
 #************************************#
 
 # ===== Spotify iOS15 (app2smile) =====
