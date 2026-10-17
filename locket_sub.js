@@ -10,7 +10,7 @@ const mapping = {
 
 // ========= NGÀY KÍCH HOẠT GOLD (08/03/2007) ========= //
 var MY_PURCHASE_DATE = "2007-03-08T10:10:14Z"; // Ngày bắt đầu có Gold
-var MY_EXPIRES_DATE  = "9999-05-25T10:10:14Z"; // Ngày hết hạn Gold
+var MY_EXPIRES_DATE  = "9999-03-08T10:10:14Z"; // Ngày hết hạn Gold
 
 // ========= Xử lý dữ liệu ========= //
 var ua = $request.headers["User-Agent"] || $request.headers["user-agent"],
