@@ -110,8 +110,8 @@ if (ua.includes("Locket")) {
             telephoto: true,
             srgb: true,
             lanczos: true,
-            quality_mbps: 1.2,
-            qualityMbps: 1.2
+            quality_mbps: 0.7,
+            qualityMbps: 0.7
         }),
         camera_roll: JSON.stringify({
             gold_max_duration: 45.0,
@@ -123,8 +123,8 @@ if (ua.includes("Locket")) {
             trim_max_duration: 45.0,
             trimMaxDuration: 45.0,
             camera_roll_max_duration: 45.0,
-            quality_mbps: 1.2,
-            qualityMbps: 1.2,
+            quality_mbps: 0.7,
+            qualityMbps: 0.7,
             flash_button: true
         }),
         live_photos: JSON.stringify({
@@ -170,7 +170,7 @@ if (ua.includes("Locket")) {
         trim_max_duration: "45.0",
         gold_max_duration: "45.0",
         goldMaxDuration: "45.0",
-        video_quality_mbps: "1.2",
+        video_quality_mbps: "0.7",
         video_sound_enabled: "true",
         microphone_enabled: "true",
         camera_microphone_enabled: "true",
