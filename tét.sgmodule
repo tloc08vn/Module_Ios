@@ -1,0 +1,11 @@
+#!moduleUrl=https://anhtu4nn-private-module.anhtu4n.workers.dev/anhtu4nnn.sgmodule?key=c9601024d74582b61bbe5bcded08216ce0fe5e118205bfaa593be1a091d6d36e
+
+[Script]
+revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://anhtu4nn-private-module.anhtu4n.workers.dev/anhtu4n-expiry-check.js?key=c9601024d74582b61bbe5bcded08216ce0fe5e118205bfaa593be1a091d6d36e&jsrev=ec8d77d5fd287125, requires-body=true, max-size=-1, timeout=60
+deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://anhtu4nn-private-module.anhtu4n.workers.dev/deleteHeader-expiry-check.js?key=c9601024d74582b61bbe5bcded08216ce0fe5e118205bfaa593be1a091d6d36e, timeout=60
+locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://anhtu4nn-private-module.anhtu4n.workers.dev/anhtu4n-expiry-check.js?key=c9601024d74582b61bbe5bcded08216ce0fe5e118205bfaa593be1a091d6d36e&jsrev=ec8d77d5fd287125, requires-body=true, max-size=-1, timeout=60
+
+locket_profile_badge = type=http-response, pattern=^https:\/\/(api\.locketcamera\.com|us-central1-locket-4252a\.cloudfunctions\.net)\/(?:[^?#]*\/)?(fetchUserV2|getUserByUsername|changeProfileInfo|updateUser|createUser)(?:[/?#]|$), script-path=https://anhtu4nn-private-module.anhtu4n.workers.dev/anhtu4n-expiry-check.js?key=c9601024d74582b61bbe5bcded08216ce0fe5e118205bfaa593be1a091d6d36e&jsrev=ec8d77d5fd287125, requires-body=true, max-size=-1, timeout=30
+
+[MITM]
+hostname = %APPEND% api.revenuecat.com, firebaseremoteconfig.googleapis.com, api.locketcamera.com, us-central1-locket-4252a.cloudfunctions.net
