@@ -216,7 +216,7 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
                   {
                       title: "chúc bạn Sử dụng Locket Vui vẻ",
                       body: "Call me by Tloc, cần hỗ trợ cứ alo zép lào 0948344850",
-                      imageURL: "https://i.ibb.co/q6sNfq5/kawaii.gif"
+                      imageURL: "https://i.ibb.co/4Rjwd2B4/Hainghi-cuti.png"
                   }
               ],
               primary_button_title: "done",
@@ -448,7 +448,7 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
           widget_frame_event: JSON.stringify({
               uid: "anhtu4nn_ig_2026",
               // url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
-              url: "https://i.ibb.co/q6sNfq5/kawaii.gif",
+              url: "https://i.ibb.co/4Rjwd2B4/Hainghi-cuti.png",
               use_local_time_zone: true,
               placement: "below",
               start_at: "2020-01-01T00:00:00",
