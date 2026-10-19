@@ -9,7 +9,175 @@
 Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+[Rule]
+# ==========================================
+# 1. TƯỜNG LỬA "HỐ ĐEN" - PHẢN DAME HACKER & CHỐNG THEO DÕI
+# Sử dụng REJECT-DROP để treo công cụ quét của hacker, máy không tốn CPU phản hồi
+# ==========================================
+# Chặn đứng các cổng (port) nguy hiểm hay bị hacker nhòm ngó (SMB, RPC, Telnet...)
+AND,((PROTOCOL,TCP),(DEST-PORT,445)),REJECT-DROP
+AND,((PROTOCOL,TCP),(DEST-PORT,135-139)),REJECT-DROP
+AND,((PROTOCOL,TCP),(DEST-PORT,23)),REJECT-DROP
+AND,((PROTOCOL,UDP),(DEST-PORT,1900)),REJECT-DROP
 
+# Chặn các máy chủ thu thập dữ liệu ngầm (Telemetry/Analytics) gây tốn pin
+DOMAIN-SUFFIX,metrics.icloud.com,REJECT-DROP
+DOMAIN-SUFFIX,logs.apple.com,REJECT-DROP
+DOMAIN-SUFFIX,analytics.google.com,REJECT-DROP
+DOMAIN-KEYWORD,telemetry,REJECT-DROP
+DOMAIN-KEYWORD,tracking,REJECT-DROP
+
+# ==========================================
+# 2. ĐIỀU HÒA NHIỆT ĐỘ TỐI ĐA (CHỐNG NÓNG MÁY KHI BẬT VPN)
+# Cho phép các luồng dữ liệu siêu nặng đi thẳng, không bắt chip iPhone phải giải mã
+# ==========================================
+# Giao thức UDP của Game (Liên Quân, PUBG, Asphalt...)
+AND,((PROTOCOL,UDP),(DEST-PORT,10000-65535)),DIRECT
+AND,((PROTOCOL,UDP),(DEST-PORT,443)),DIRECT
+
+# Các CDN tải Video/Ảnh siêu nặng
+DOMAIN-SUFFIX,googlevideo.com,DIRECT
+DOMAIN-SUFFIX,nflxvideo.net,DIRECT
+DOMAIN-KEYWORD,tiktokcdn,DIRECT
+DOMAIN-KEYWORD,fbcdn,DIRECT
+DOMAIN-KEYWORD,vcdn,DIRECT
+DOMAIN-KEYWORD,akamaihd,DIRECT
+
+# Cho phép mạng nội địa VN (Ngân hàng, Shopee, Zalo) đi thẳng tốc độ tối đa
+GEOIP,VN,DIRECT
+
+# ==========================================
+# 3. KHIÊN CHỐNG QUẢNG CÁO TUYỆT ĐỐI
+# Tiết kiệm dung lượng 5G, chặn pop-up bẩn và mã độc
+# ==========================================
+DOMAIN-SUFFIX,admob.com,REJECT-DROP
+DOMAIN-SUFFIX,googlesyndication.com,REJECT-DROP
+DOMAIN-SUFFIX,doubleclick.net,REJECT-DROP
+DOMAIN-SUFFIX,googleadservices.com,REJECT-DROP
+DOMAIN-SUFFIX,applovin.com,REJECT-DROP
+DOMAIN-SUFFIX,applvn.com,REJECT-DROP
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT-DROP
+DOMAIN-SUFFIX,vungle.com,REJECT-DROP
+DOMAIN-SUFFIX,ironsrc.com,REJECT-DROP
+DOMAIN-SUFFIX,chartboost.com,REJECT-DROP
+DOMAIN-SUFFIX,adcolony.com,REJECT-DROP
+DOMAIN-SUFFIX,inmobi.com,REJECT-DROP
+DOMAIN-SUFFIX,appsflyer.com,REJECT-DROP
+DOMAIN-SUFFIX,adjust.com,REJECT-DROP
+DOMAIN-SUFFIX,rayjump.com,REJECT-DROP
+DOMAIN-SUFFIX,criteo.com,REJECT-DROP
+DOMAIN-KEYWORD,adsystem,REJECT-DROP
+
+# ==========================================
+# 4. QUY TẮC CUỐI: CÁC KẾT NỐI KHÁC VÀO PROXY
+# ==========================================
+FINAL,PROXY
+
+[Header Rewrite]
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+
+[URL Rewrite]
+# Chặn quảng cáo Google Video
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad reject-200
+
+# YouTube Ads
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext reject-200
+
+# General Video Ad request
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+
+# ==========================================
+# MODULE VIP / PREMIUM TỔNG HỢP
+# ==========================================
+[Script]
+# --- BỘ MODULE GỐC CỦA ĐHT ---
+# Sub-Store
+Sub-Store Core=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120
+Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true
+Sub-Store Sync=type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+
+# Youtube Premium
+youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,engine={{{script}}},script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js,argument="{"lyricLang":"vi","captionLang":"vi","blockUpload":true,"blockImmersive":true,"debug":false}"
+
+# SoundCloudGo+
+SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Soundcloudpremium.js
+
+# LocketGold (ĐHT)
+revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/locketgoldHT.js, requires-body=true, max-size=-1, timeout=60
+locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/tloc08vn/Module_Ios/refs/heads/main/Locket_Unlocked.js, requires-body=true, max-size=-1, timeout=60
+
+# RevenueCatVip Tổng hợp
+RevenueCatVip = type=http-response, pattern=^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecat.js, requires-body=true, max-size=-1, timeout=60
+
+# iTunes Bazzat
+iTunes = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/itunes.js, requires-body=true, max-size=-1, timeout=60
+bazaart = type=http-response,pattern=https://buy.itunes.apple.com/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/bazzat.js
+
+# Spotify ĐHT 
+spotify = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/spotify.js,argument=appid=此处填入APPID&securityKey=此处填入密钥
+
+# MOJO
+MOJO = type=http-response,pattern=https:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers)\/*,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/mojo.js
+
+# Clica
+Clica = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$),requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ClicaVip.js
+
+# Smallpdf
+Smallpdf = type=http-response,pattern=https:\/\/pro\.smallpdf\.com\/pro\/account,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/smallpdf.js
+
+# Photomath
+Photomath = type=http-response,pattern=https:\/\/lapi\.photomath\.net\/v4\/me,requires-body=1,script-path=https://raw.githubusercontent.com/deezertidal/private/master/js-backup/Crack/poh.js
+
+# Piccollage
+Piccollage = type=http-response,pattern=https:\/\/piccollage\.com\/api\/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpty/main/picCollage.js
+
+# Pixelance
+Pixelance = type=http-response,pattern=^https:\/\/iap\.etm\.tech\/receipts,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Pixelance.js
+
+# 1blocker
+1blocker = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/1blocker.js
+
+# ILovePDF
+ILovePDF = type=http-response,pattern=https:\/\/service\.ilovepdf\.com\/v1\/user,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScript/main/lovePdf.js
+
+# Chic
+Chic = type=http-response,pattern=^https:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info\.json,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ChicHTVIP.js
+
+# PhotoshopExpress
+PhotoshopExpress = type=http-response,pattern=^https:\/\/lcs-mobile-cops\.adobe\.io\/mobile_profile,requires-body=1,script-path=https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/photoshop.js
+
+# SODA
+yueh=type=http-response,pattern=^http:\/\/yueh\.app168\.cc\/(first|panda|jiaopian|emoji|manghe)\/iap\/check\.php$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/yueh.js
+
+# TouchRetouch
+TouchRetouch=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers\/(\$RCAnonymousID%3A\w{32}))$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/TouchRetouch.js
+
+# VSCO
+VSCO=type=http-request,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/subscribers\/,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/vsco.js
+VSCO3=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/subscribers\/,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/vsco.js
+
+# Truecaller
+Truecaller = type=http-response,pattern=^https:\/\/premium-(.+)\.truecaller\.com\/v\d\/(subscriptions|products\/apple),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/TruecallerHT.js
+
+# Kinemaster
+Kinemaster = type=http-response,pattern=^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/kinemaster.js
+
+# CamScanner
+Camscanner = type=http-response,pattern=https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop,requires-body=1,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/CamscannerHT.js
+
+# AlightMotion
+AlightMotion = type=http-response,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses,requires-body=true,max-size=131072,timeout=10,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/alightmotionHT.js
+
+# ==========================================
+# CẤP QUYỀN GIẢI MÃ SSL / MITM
+# ==========================================
+[MITM]
+hostname = %APPEND%, *.googlevideo.com, -redirector*.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, sub.store, api.revenuecat.com, buy.itunes.apple.com, api-mobile.soundcloud.com, pi-mobile.soundcloud.com, spclient.wg.spotify.com, pro.smallpdf.com, lapi.photomath.net, piccollage.com, iap.etm.tech, service.ilovepdf.com, api-sub.meitu.com, lcs-mobile-cops.adobe.io, yueh.app168.cc, premium*.truecaller.com, api-account.kinemasters.com, ap*.intsig.net, us-central1-alight-creative.cloudfunctions.net, api.picsart.com, api.mr.pixocial.com, newbeee-api.beautyplus.com, *spclient.spotify.com
 [Header Rewrite]
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
 ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
