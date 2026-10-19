@@ -216,7 +216,7 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
                   {
                       title: "chúc bạn Sử dụng Locket Vui vẻ",
                       body: "Call me by Tloc, cần hỗ trợ cứ alo zép lào 0948344850",
-                      imageURL: "https://i.ibb.co/RTm5P1n9/kitty-1.png"
+                      imageURL: "https://i.ibb.co/q6sNfq5/kawaii.gif"
                   }
               ],
               primary_button_title: "done",
@@ -228,8 +228,8 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
           android_subscribe_gold_button_enabled: "false",
           profile_badge_visible: "true",
           lunar_new_year_app_icon_enabled: "true",
-          settings_instagram_url: "https://www.instagram.com/_anhtu4n_/",
-          settings_tiktok_url: "https://tiktok.com/@_anhtu4n_"
+          settings_facebook_url: "https://www.facebook.com/share/1K9m813Ps9/?mibextid=wwXIfr",
+          settings_tiktok_url: "https://www.tiktok.com/@nguyenloc0803?_r=1&_t=ZS-9Agmx9h9LmC"
       });
   
       // ============================================================
@@ -270,8 +270,8 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
               telephoto: true,
               srgb: true,
               lanczos: true,
-              quality_mbps: 0.6,
-              qualityMbps: 0.6
+              quality_mbps: 0.7,
+              qualityMbps: 0.7
           }),
           camera_roll: JSON.stringify({
               gold_max_duration: 30.0,
@@ -283,8 +283,8 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
               trim_max_duration: 30.0,
               trimMaxDuration: 30.0,
               camera_roll_max_duration: 30.0,
-              quality_mbps: 0.6,
-              qualityMbps: 0.6,
+              quality_mbps: 0.7,
+              qualityMbps: 0.7,
               flash_button: true
           }),
           live_photos: JSON.stringify({
@@ -330,7 +330,7 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
           trim_max_duration: "30.0",
           gold_max_duration: "30.0",
           goldMaxDuration: "30.0",
-          video_quality_mbps: "0.6",
+          video_quality_mbps: "0.7",
           video_sound_enabled: "true",
           microphone_enabled: "true",
           camera_microphone_enabled: "true",
