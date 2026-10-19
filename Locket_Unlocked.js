@@ -5,7 +5,7 @@
 // Tác giả: @TanLocNe
 // ============================================================
 
-// Tanloc | Live runtime check and per-license options. Client code can be modified by users.
+// Tloc | Live runtime check and per-license options. Client code can be modified by users.
 (function(){
   var nativeDone=$done, finished=false;
   function logPolicy(message){try{if(typeof console!=='undefined'&&typeof console.log==='function')console.log('[anhtu4n expiry-check] '+message);}catch(e){}}
@@ -112,7 +112,7 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
     'Locket': ['Gold']
   };
   // =========   Phần cố định  ========= // 
-  // =========  @TanLocNe_ ========= // 
+  // =========  @TlocVn ========= // 
   var ua = ($request.headers["User-Agent"] || $request.headers["user-agent"] || ""),
     obj = JSON.parse($response.body);
 
@@ -214,12 +214,12 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
               title: "Lên Locket Gold rồi nè",
               feature_set: [
                   {
-                      title: "chúc bạn Sử dụng Locket Vui vẻ",
-                      body: "Call me by Tloc, cần hỗ trợ cứ alo zép lào 0948344850",
-                      imageURL: "https://i.ibb.co/4Rjwd2B4/Hainghi-cuti.png"
+                      title: "Chúc bạn sử dụng Locket Vui vẻ 💕",
+                      body: "Call me by Tloc, cần hỗ trợ cứ alo 0948344850 =))",
+                      imageURL: "https://i.ibb.co/q6sNfq5/kawaii.gif"
                   }
               ],
-              primary_button_title: "done",
+              primary_button_title: "Xong",
               campaign: "locket_gold_welcome_v3",
               start_at: "2020-01-01T00:00:00",
               end_at: "2099-12-31T23:59:59",
@@ -228,8 +228,8 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
           android_subscribe_gold_button_enabled: "false",
           profile_badge_visible: "true",
           lunar_new_year_app_icon_enabled: "true",
-          settings_facebook_url: "https://www.facebook.com/share/1K9m813Ps9/?mibextid=wwXIfr",
-          settings_tiktok_url: "https://www.tiktok.com/@nguyenloc0803?_r=1&_t=ZS-9Agmx9h9LmC"
+          settings_facebook_url: "https://www.facebook.com/share/19ov6xZqGQ/?mibextid=wwXIfr",
+          settings_tiktok_url: "https://www.tiktok.com/@nguyenloc0803?_r=1&_t=ZS-9AgpVCPKKXK"
       });
   
       // ============================================================
@@ -270,8 +270,8 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
               telephoto: true,
               srgb: true,
               lanczos: true,
-              quality_mbps: 0.7,
-              qualityMbps: 0.7
+              quality_mbps: 0.6,
+              qualityMbps: 0.6
           }),
           camera_roll: JSON.stringify({
               gold_max_duration: 30.0,
@@ -283,8 +283,8 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
               trim_max_duration: 30.0,
               trimMaxDuration: 30.0,
               camera_roll_max_duration: 30.0,
-              quality_mbps: 0.7,
-              qualityMbps: 0.7,
+              quality_mbps: 0.6,
+              qualityMbps: 0.6,
               flash_button: true
           }),
           live_photos: JSON.stringify({
@@ -330,7 +330,7 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
           trim_max_duration: "30.0",
           gold_max_duration: "30.0",
           goldMaxDuration: "30.0",
-          video_quality_mbps: "0.7",
+          video_quality_mbps: "0.6",
           video_sound_enabled: "true",
           microphone_enabled: "true",
           camera_microphone_enabled: "true",
@@ -988,14 +988,14 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
       // ===== THU NGHIEM CAPTION TRANG TRI: KHONG PHAI GOLD CHINH THUC =====
       // Chi THEM 2 caption vao nhom rieng; khong thay widget/profile/video.
       var localBadgeGroup = {
-          section: "🎖 tlocbavai",
+          section: "🎖 anhtu4n",
           items: [
               {
-                  overlay_id: "caption:tlocvn_decor_gold",
+                  overlay_id: "caption:anhtu4n_decor_gold",
                   source: "remote",
                   caption: {
                       type: "static_content",
-                      text: "✦ Tloccuti ✦",
+                      text: "✦ anhtu4n ✦",
                       background: { colors: ["#FDE9A1", "#D6A22C"] },
                       icon: { type: "emoji", data: "🏅" },
                       max_lines: 1,
@@ -1003,11 +1003,11 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
                   }
               },
               {
-                  overlay_id: "caption:Tloc_decor_winter",
+                  overlay_id: "caption:anhtu4n_decor_winter",
                   source: "remote",
                   caption: {
                       type: "static_content",
-                      text: "❄ Tanlocvn ❄",
+                      text: "❄ anhtu4n ❄",
                       background: { colors: ["#C7E9FF", "#83BBF7"] },
                       icon: { type: "emoji", data: "❄️" },
                       max_lines: 1,
