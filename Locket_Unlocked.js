@@ -112,7 +112,7 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
     'Locket': ['Gold']
   };
   // =========   Phần cố định  ========= // 
-  // =========  @_anhtu4n_ ========= // 
+  // =========  @TanLocNe_ ========= // 
   var ua = ($request.headers["User-Agent"] || $request.headers["user-agent"] || ""),
     obj = JSON.parse($response.body);
 
@@ -214,12 +214,12 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
               title: "Lên Locket Gold rồi nè",
               feature_set: [
                   {
-                      title: "Ig: @_anhtu4n_",
-                      body: "Call me by tún, cần hỗ trợ cứ alo=))",
+                      title: "chúc bạn Sử dụng Locket Vui vẻ",
+                      body: "Call me by Tloc, cần hỗ trợ cứ alo zép lào 0948344850",
                       imageURL: "https://i.ibb.co/RTm5P1n9/kitty-1.png"
                   }
               ],
-              primary_button_title: "Xong",
+              primary_button_title: "done",
               campaign: "locket_gold_welcome_v3",
               start_at: "2020-01-01T00:00:00",
               end_at: "2099-12-31T23:59:59",
