@@ -448,7 +448,7 @@ if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
           widget_frame_event: JSON.stringify({
               uid: "anhtu4nn_ig_2026",
               // url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
-              url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
+              url: "https://i.ibb.co/q6sNfq5/kawaii.gif",
               use_local_time_zone: true,
               placement: "below",
               start_at: "2020-01-01T00:00:00",
