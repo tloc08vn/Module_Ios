@@ -5,370 +5,527 @@
 // Tác giả: @TanLocNe
 // ============================================================
 
-var ua = $request.headers["User-Agent"] || $request.headers["user-agent"] || "";
-var obj = JSON.parse($response.body);
+// Tanloc | Live runtime check and per-license options. Client code can be modified by users.
+(function(){
+  var nativeDone=$done, finished=false;
+  function logPolicy(message){try{if(typeof console!=='undefined'&&typeof console.log==='function')console.log('[anhtu4n expiry-check] '+message);}catch(e){}}
+  function pass(){if(!finished){finished=true;nativeDone({});}}
+  if(typeof $httpClient==='undefined'||typeof $httpClient.get!=='function'){logPolicy('Không có HTTP client — giữ phản hồi gốc');pass();return;}
+  try{$httpClient.get({url:"https://anhtu4nn-private-module.anhtu4n.workers.dev/runtime?key=c9601024d74582b61bbe5bcded08216ce0fe5e118205bfaa593be1a091d6d36e"+'&_='+Date.now(),headers:{'Cache-Control':'no-store','Accept':'application/json'}},function(error,response,body){
+    try{if(error||Number(response&&(response.status||response.statusCode))!==200){logPolicy('Không xác minh được runtime — giữ phản hồi gốc');pass();return;}
+      var __ANHTU4NN_POLICY__=JSON.parse(body);
+      var goldDeadline=Date.parse(__ANHTU4NN_POLICY__.goldExpiresAt||'');
+      var expiredByDate=Number.isFinite(goldDeadline)&&Date.now()>=goldDeadline;
+      var accessOK=__ANHTU4NN_POLICY__.allowed===true&&!expiredByDate;
+      logPolicy(accessOK?'Được phép sửa phản hồi':'DỪNG tùy chỉnh — '+(expiredByDate?'đã đến hạn Gold':String(__ANHTU4NN_POLICY__.reason||'license không hợp lệ')));
+      if(!accessOK||!__ANHTU4NN_POLICY__.features||!Array.isArray(__ANHTU4NN_POLICY__.badgeUsernames)){
+        // Best effort: only after a new intercepted response is received.
+        // Unknown values and real server entitlements are not fabricated or removed.
+        if((expiredByDate||__ANHTU4NN_POLICY__.reason==='gold_expired') && __ANHTU4NN_POLICY__.refreshOnGoldExpiry===true){
+          try{
+            var u=String($request.url||'');
+            var original=JSON.parse(($response&&$response.body)||'{}');
+            var changed=false;
+            if(u.indexOf('firebaseremoteconfig.googleapis.com')!==-1 && original&&original.entries&&typeof original.entries==='object'){
+              var entries=original.entries;
+              function existing(key,value){if(Object.prototype.hasOwnProperty.call(entries,key)){if(entries[key]!==value){entries[key]=value;changed=true;}}}
+              function nested(key,update){
+                if(!Object.prototype.hasOwnProperty.call(entries,key))return;
+                try{var obj=typeof entries[key]==='string'?JSON.parse(entries[key]):entries[key];if(obj&&typeof obj==='object'&&!Array.isArray(obj)){
+                  update(obj);entries[key]=JSON.stringify(obj);changed=true;
+                }}catch(e){}
+              }
+              nested('feature_gates',function(x){[
+                'long_captions','longer_video','profile_badge','custom_widget_frames',
+                'camera_roll','app_icon_picker','camera_theme','locket_views'
+              ].forEach(function(k){if(Object.prototype.hasOwnProperty.call(x,k))x[k]='disabled';});});
+              nested('upsell_features',function(x){Object.keys(x).forEach(function(k){if(typeof x[k]==='boolean')x[k]=false;});});
+              nested('camera_filter_config',function(x){
+                ['allows_custom_filters','show_filter_button','sheet_enabled','open_sheet_immediately'].forEach(function(k){if(Object.prototype.hasOwnProperty.call(x,k))x[k]=false;});
+                ['sheet_filters','picker_filters'].forEach(function(k){if(Array.isArray(x[k]))x[k]=[];});
+              });
+              nested('widget_frame_event',function(x){if(Object.prototype.hasOwnProperty.call(x,'end_at'))x.end_at='2000-01-01T00:00:00';});
+              nested('feature_discovery_popup_config',function(x){if(Object.prototype.hasOwnProperty.call(x,'end_at'))x.end_at='2000-01-01T00:00:00';});
+              ['profile_badge_visible','longer_camera_roll_videos_enabled','widget_badge_enabled','widget_badge_v2',
+               'overlay_navigator_enabled','captions_enabled'].forEach(function(k){existing(k,'false');});
+            }
+            // Do not strip or fake RevenueCat subscriptions: legitimate store entitlements must survive.
+            if(changed){
+              var hdr={...($response.headers||{})};hdr['Cache-Control']='no-store, max-age=0';hdr['Pragma']='no-cache';hdr['Expires']='0';
+              finished=true;nativeDone({body:JSON.stringify(original),headers:hdr});return;
+            }
+          }catch(e){}
+        }
+        pass();return;
+      }
+      var flags=__ANHTU4NN_POLICY__.features;
+      var requestUrl=String($request.url||'');
+      if(/^https:\/\/api\.revenuecat\.com\//.test(requestUrl)&&flags.gold!==true){pass();return;}
+      if(/(fetchUserV2|getUserByUsername|changeProfileInfo|updateUser|createUser)/.test(requestUrl)&&flags.badge!==true){pass();return;}
+      var originalResponse=null;try{originalResponse=JSON.parse($response.body||'{}');}catch{}
+      function featureForKey(key){var k=key.toLowerCase();
+        if(/badge|profile_gold/.test(k))return 'badge';
+        if(/voice|audio|microphone/.test(k))return 'voice';
+        if(/filter|ai_camera|ai_photo/.test(k))return 'filter';
+        if(/widget|holiday|frame_event/.test(k))return 'widget';
+        if(/caption|overlay/.test(k))return 'captions';
+        if(/video|upload_quality|bitrate|fps/.test(k))return 'video';
+        if(/gold|paywall|subscription|feature_gates|upsell_features|premium/.test(k))return 'gold';
+        return null;}
+      function $done(result){
+        if(finished)return;
+        try{if(result&&typeof result.body==='string'&&originalResponse&&requestUrl.indexOf('firebaseremoteconfig.googleapis.com')!==-1){
+          var edited=JSON.parse(result.body), before=originalResponse.entries||{}, after=edited.entries||{};
+          Object.keys(after).forEach(function(k){
+            if(k==='feature_gates'||k==='upsell_features'){
+              try{var nested=JSON.parse(after[k]),base=JSON.parse(before[k]||'{}');
+                Object.keys(nested).forEach(function(n){var child=featureForKey(n)||'gold';if(flags[child]===false){if(Object.prototype.hasOwnProperty.call(base,n))nested[n]=base[n];else delete nested[n];}});
+                after[k]=JSON.stringify(nested);return;
+              }catch(e){}
+            }
+            var feature=featureForKey(k);if(feature&&flags[feature]===false){if(Object.prototype.hasOwnProperty.call(before,k))after[k]=before[k];else delete after[k];}
+          });
+          // The base Locket script uses TWO live image properties for the IG frame.
+          // The commented // url: line is not executable; update widget_frame_event.url and feature_discovery_popup_config.feature_set[].imageURL.
+          if(flags.widget===true&&typeof __ANHTU4NN_POLICY__.widgetFrameUrl==='string'&&__ANHTU4NN_POLICY__.widgetFrameUrl.indexOf('https://')===0){
+            var widgetUrl=__ANHTU4NN_POLICY__.widgetFrameUrl;
+            if(after.widget_frame_event){try{var frame=typeof after.widget_frame_event==='string'?JSON.parse(after.widget_frame_event):after.widget_frame_event;
+              if(frame&&typeof frame==='object'&&!Array.isArray(frame)){frame.url=widgetUrl;after.widget_frame_event=JSON.stringify(frame);}}catch(e){}}
+            if(after.feature_discovery_popup_config){try{var discovery=typeof after.feature_discovery_popup_config==='string'?JSON.parse(after.feature_discovery_popup_config):after.feature_discovery_popup_config;
+              if(discovery&&Array.isArray(discovery.feature_set)){
+                // Only replace the known IG asset, not unrelated promotional artwork.
+                discovery.feature_set.forEach(function(item,index){
+                  if(item&&typeof item==='object'&&typeof item.imageURL==='string'&&((item.imageURL==='https://i.ibb.co/whxBQJfz/ig.png'||item.imageURL==='https://i.ibb.co/RTm5P1n9/kitty-1.png'||index===0)))item.imageURL=widgetUrl;
+                });
+                after.feature_discovery_popup_config=JSON.stringify(discovery);}}catch(e){}}
+          }
+          result.body=JSON.stringify(edited);
+        }}catch(e){pass();return;}
+        finished=true;nativeDone(result||{});}
+      (function runOriginal(){
+// anhtu4n | RevenueCat + Firebase Remote Config + scoped profile Response Override (friends-safe)
+const url = String($request.url || "");
 
-if (ua.includes("Locket")) {
-    obj.Attention = "Chúc mừng bạn!trải nghiệm vui vẻ nhé!";
-    obj.entries = obj.entries || {};
+if (/^https:\/\/api\.revenuecat\.com\//.test(url)) {
+  // Gold
+  const mapping = {
+    'Locket': ['Gold']
+  };
+  // =========   Phần cố định  ========= // 
+  // =========  @_anhtu4n_ ========= // 
+  var ua = ($request.headers["User-Agent"] || $request.headers["user-agent"] || ""),
+    obj = JSON.parse($response.body);
 
-    // ============================================================
-    // 1. CẤU HÌNH GOLD, FEATURE GATES & PAYWALL
-    // ============================================================
-    Object.assign(obj.entries, {
-        feature_gates: JSON.stringify({
-            app_icon_picker: "enabled",
-            camera_roll: "enabled",
-            camera_theme: "enabled",
-            locket_views: "enabled",
-            long_captions: "enabled",
-            longer_video: "enabled",
-            unlimited_friends: "enabled",
-            priority_support: "enabled",
-            profile_badge: "enabled",
-            remove_ads: "enabled",
-            video: "enabled",
-            custom_widget_frames: "enabled",
-            streak_recovery: "enabled"
-        }),
-        upsell_features: JSON.stringify({
-            app_icon_picker: true,
-            camera_roll: true,
-            camera_theme: true,
-            locket_views: true,
-            remove_ads: true,
-            custom_widget_frames: true
-        }),
-        paywall_presentation_config: JSON.stringify({
-            uid: "paywall_testflight",
-            onboarding: false,
-            after_sent_moment: false,
-            on_foreground: false,
-            interval: 2592000,
-            profile_banner: true
-        }),
-        feature_discovery_popup_config: JSON.stringify({
-            tag: "LOCKET GOLD",
-            tag_gradient: true,
-            tag_style: "gold_gradient",
-            title: "Lên LocketGold rồi đó 😎",
-            feature_set: [
-                {
-                    title: "Cảm ơn đã sử dụng dịch vụ bên mình ✨",
-                    body: " Tloc chúc các bạn sử dụng vui vẻ💛",
-                    imageURL: "https://i.postimg.cc/qMCkrKJw/IMG-2833.jpg"
-                }
-            ],
-            primary_button_title: "Xong",
-            campaign: "locket_gold_welcome_v3",
-            start_at: "2020-01-01T00:00:00",
-            end_at: "2099-12-31T23:59:59",
-            use_local_time_zone: true
-        }),
-        android_subscribe_gold_button_enabled: "false",
-        profile_badge_visible: "true",
-        lunar_new_year_app_icon_enabled: "true",
-        settings_faceboonk_url: "https://www.facebook.com/share/1G5zL1oZbV/?mibextid=wwXIfr",
-        settings_tiktok_url: "https://www.tiktok.com/@nguyenloc0803?_r=1&_t=ZS-9AYwyXCVI4U"
-    });
+  // RevenueCat original_app_user_id is NOT used as a Locket profile UID.
+  // The badge override recognizes ONLY configured VIP usernames / UIDs.
 
-    // ============================================================
-    // 2. CHẶN QUẢNG CÁO & TẮT TRACKING (SENTRY)
-    // ============================================================
-    Object.assign(obj.entries, {
-        history_ads_mode: "off",
-        history_ads_prefetch_count: "0",
-        history_ads_prefetch_immediate: "false",
-        history_ads_prefetch_reroute: "false",
-        history_ads_dynamic_insertion: "false",
-        history_ads_refresh_prefetch_on_foreground: "false",
-        history_ads_floor_price: "0",
-        history_ads_floor_price_att: "0",
-        history_ad_log_displayed_on_background: "false",
-        history_ads_debug_menu: "false",
-        sentry_sample_rate: "0",
-        sentry_network_tracing: "false",
-        sentry_performance_tracking: "false",
-        sentry_trace_sample_rate: "0",
-        sentry_profiles_sample_rate: "0"
-    });
-
-    // ============================================================
-    // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY
-    // ============================================================
-    Object.assign(obj.entries, {
-        camera: JSON.stringify({
-            gold_max_duration: 30.0,
-            goldMaxDuration: 30.0,
-            max_duration: 30.0,
-            maxDuration: 30.0,
-            ultra_wide: true,
-            ultraWide: true,
-            volume_button: true,
-            volumeButton: true,
-            flash_button: true,
-            telephoto: true,
-            srgb: true,
-            lanczos: true,
-            quality_mbps: 0.9,
-            qualityMbps: 0.9
-        }),
-        camera_roll: JSON.stringify({
-            gold_max_duration: 30.0,
-            goldMaxDuration: 30.0,
-            video_max_duration: 30.0,
-            videoMaxDuration: 30.0,
-            max_duration: 30.0,
-            maxDuration: 30.0,
-            trim_max_duration: 30.0,
-            trimMaxDuration: 30.0,
-            camera_roll_max_duration: 30.0,
-            quality_mbps: 0.9,
-            qualityMbps: 0.9,
-            flash_button: true
-        }),
-        live_photos: JSON.stringify({
-            capture: true,
-            viewing: true,
-            catch_up: true,
-            widget_looping_mode: "never"
-        }),
-        camera_filter_config: JSON.stringify({
-            allows_custom_filters: true,
-            show_filter_button: true,
-            sheet_enabled: true,
-            open_sheet_immediately: true,
-            sheet_filters: [
-                { title: { en: "Goofy" }, filter_ids: ["okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows"] },
-                { title: { en: "Looks" }, filter_ids: ["bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns", "tatted", "mohawk", "braces", "bye_brows"] },
-                { title: { en: "Celebrate" }, filter_ids: ["slimed", "princess", "disco_lights", "cash_money", "happy_birthday"] },
-                { title: { en: "Cute" }, filter_ids: ["cutesy", "sticker_face", "flower_crown", "love_bug"] },
-                { title: { en: "Costumes" }, filter_ids: ["wedding", "cowboy_cowgirl", "giraffe", "clown"] },
-                { title: { en: "Holidays" }, filter_ids: ["easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun", "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"] }
-            ],
-            picker_filters: [
-                "okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows",
-                "bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns",
-                "tatted", "mohawk", "braces", "slimed", "princess",
-                "disco_lights", "cash_money", "happy_birthday", "cutesy", "sticker_face",
-                "flower_crown", "love_bug", "wedding", "cowboy_cowgirl", "giraffe",
-                "clown", "easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun",
-                "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"
-            ]
-        }),
-        camera_roll_preview_enabled: "true",
-        camera_roll_video_enabled: "true",
-        camera_roll_video_upload_enabled: "true",
-        internal_camera_roll_video_upload_enabled: "true",
-        longer_camera_roll_videos_enabled: "true",
-        camera_roll_video_max_duration: "30.0",
-        camera_roll_max_duration: "30.0",
-        camera_roll_duration: "30.0",
-        max_video_duration: "30.0",
-        video_max_duration: "30.0",
-        video_trim_max_duration: "30.0",
-        trim_max_duration: "30.0",
-        gold_max_duration: "30.0",
-        goldMaxDuration: "30.0",
-        video_quality_mbps: "0.9",
-        video_sound_enabled: "true",
-        microphone_enabled: "true",
-        camera_microphone_enabled: "true",
-        audio_session_deactivation_enabled: "true",
-        zoom_enabled: "true",
-        upload_main: "false",
-        upload_main_image_quality: "1.0",
-        upload_main_image_size: "1440",
-        upload_thumbnail_image_quality: "1.0",
-        upload_thumbnail_image_size: "1020"
-    });
-
-    // ============================================================
-    // 4. BẠN BÈ, GIỚI HẠN & ĐỀ XUẤT KẾT BẠN
-    // ============================================================
-    Object.assign(obj.entries, {
-        max_friends_count: "999999",
-        friend_limit_mode: "0",
-        soft_friend_limit_threshold_count: "999999",
-        show_friend_limit_on_cam: "false",
-        signup_max_friends_count: "999999",
-        celebrity_inbox_limit: "999999",
-        friend_limit_geo_override: JSON.stringify({ experiments: {}, area_code_overrides: {} }),
-        friends_sheet_locket_count_config: JSON.stringify({
-            items: [
-                { threshold: 0, icon_name: "heart" },
-                { threshold: 1, icon_name: "heart.fill" },
-                { threshold: 10, emoji: "🤍" },
-                { threshold: 100, emoji: "💛" },
-                { threshold: 500, emoji: "❤️‍🔥" },
-                { threshold: 1000, emoji: "🌟🫶🌟" },
-                { threshold: 2000, emoji: "✨💟✨" },
-                { threshold: 5000, emoji: "⚡️😵‍💫⚡" },
-                { threshold: 10000, emoji: "✨⚡️😱⚡✨" }
-            ]
-        }),
-        friend_locket_count_config: JSON.stringify({
-            items: [
-                { threshold: 0, icon_name: "heart" },
-                { threshold: 1, icon_name: "heart.fill" },
-                { threshold: 10, emoji: "🤍" },
-                { threshold: 100, emoji: "💛" },
-                { threshold: 500, emoji: "❤️‍🔥" },
-                { threshold: 1000, emoji: "✨💗✨" },
-                { threshold: 2000, emoji: "✨️⭐️✨" },
-                { threshold: 5000, emoji: "✨💎✨" },
-                { threshold: 10000, emoji: "✨🔐💛✨" }
-            ]
-        }),
-        new_friends_monitoring_enabled: "true",
-        improved_friend_suggestions: "true",
-        show_friend_suggestions_by_default: "true",
-        emoji_friend_suggestions: "true",
-        prompt_contact_permissions_on_search: "true",
-        populate_phone_numbers_from_suggest_friends: "true",
-        hide_friends_enabled: "true",
-        hide_invite_links: "false",
-        hide_skip_contacts: "true",
-        show_all_contacts: "true",
-        show_invite_suggestions: "true",
-        show_no_friends_bottom_sheet: "false",
-        signup_allow_skip_add_friends: "true"
-    });
-
-    // ============================================================
-    // 5. MOMENTS, STREAK, CHAT & TƯƠNG TÁC
-    // ============================================================
-    try {
-        var streak = JSON.parse(obj.entries.streak_config || "{}");
-        streak.minimum_recovery_count = 0;
-        streak.minimum_display_count = 0;
-        obj.entries.streak_config = JSON.stringify(streak);
-    } catch (e) {}
-
-    Object.assign(obj.entries, {
-        moment_views_enabled: "true",
-        moment_views_v2: "true",
-        record_moment_views: "true",
-        notify_moment_views: "true",
-        get_moment_views_as_cloud_function: "true",
-        moment_reactions_v2: "true",
-        chat_reactions_enabled: "true",
-        conversation_reactions: "true",
-        typing_indicators_enabled: "true",
-        unsend_message_enabled: "true",
-        reply_prototype_enabled: "true",
-        messages_integration: "true",
-        conversations_enabled: "true",
-        fetch_moments_in_conversation: "true",
-        hide_chat_button: "false",
-        groups_enabled: "true",
-        send_to_self_only_mode: "always_enabled",
-        time_travel_rewind_v2_enabled: "true",
-        calendar_delete_moment_enabled: "true",
-        calendar_rewind_enabled: "false",
-        locket_yearbook_story_sharing_encouraged: "true",
-        rollcall_enabled: "true",
-        rollcall_comment_actions: "true",
-        rollcall_profile_button: "true",
-        rollcall_prompt_export_after_share: "true",
-        rollcall_confirm_skip_tagging: "false",
-        rollcall_tap_to_tag_enabled: "false"
-    });
-
-    // ============================================================
-    // 6. WIDGET, THÔNG BÁO & GIAO DIỆN (JOURNAL / PROFILE)
-    // ============================================================
-    Object.assign(obj.entries, {
-        widget_frame_event_max_images: "5",
-        android_widget_frame_event_enabled: "true",
-        widget_badge_enabled: "true",
-        widget_badge_v2: "true",
-        widget_stale_state_enabled: "false",
-        widget_last_sent_indicator: "false",
-        widget_sync_token_reload_mode: "clearTokenNever",
-        widget_frame_event: JSON.stringify({
-            uid: "midautumn_2026",
-            url: "https://i.ibb.co/mC13Vnp6/Hainghi-cuti.png",
-            use_local_time_zone: true,
-            placement: "below",
-            start_at: "2020-01-01T00:00:00",
-            end_at: "2099-12-31T23:59:59"
-        }),
-        live_activity_onboarding: "true",
-        live_activity_onboarding_variant: "friending",
-        register_live_activity_push_to_start_token: "true",
-        live_activity_remove_stale_start_token: "true",
-        notification_preferences_live_activities: "true",
-        notification_preferences: "true",
-        notification_reply_body_visible: "true",
-        prompt_notification_permissions_after_friending: "true",
-        activity_bar_enabled: "true",
-        journal_activity_bar_enabled: "true",
-        journal_settings: JSON.stringify({
-            debug_menu_enabled: false,
-            focus_animation: true,
-            compact_header: true,
-            friends_button: true,
-            reverse_scroll_direction: false,
-            streak_visualization: true,
-            streak_visualization_style: "gradient",
-            streak_header_minimum_count: 0,
-            streak_visualization_minimum_count: 2,
-            overlay_indicators: { location: true, music: true, static_content: true, weather: true }
-        }),
-        qr_code_config: JSON.stringify({ profile_enabled: true, scanning_enabled: true }),
-        custom_profile_pics: "true",
-        profile_menu_v2_enabled: "true"
-    });
-
-    // ============================================================
-    // 7. HỆ THỐNG, CACHE & STORAGE CDN
-    // ============================================================
-    Object.assign(obj.entries, {
-        cdn_domain_replacements: JSON.stringify({
-            "firebasestorage.googleapis.com": "cdn.locketcamera.com"
-        }),
-        cdn_domain_replacements_video: "true",
-        storage_bucket: "gs://locket-img",
-        storage_bucket_video: "gs://locket-video",
-        image_cache_max_age_sec: "157680000",
-        image_cache_max_size: "400000000",
-        history_cache_age_days: "1000",
-        user_cache_max_age_sec: "691200",
-        friends_cache_max_age_sec: "2592000",
-        image_fetch_cache: "true",
-        image_cache_use_shared: "true",
-        use_doc_dir_for_image_cache: "true",
-        efficient_history_cache_invalidation: "true",
-        timestamp_based_history_fetches: "true",
-        get_latest_moment_v2: "true",
-        fetch_users_from_cloud_function: "true",
-        refresh_interval: "60",
-        firestore_refresh_v2: "true",
-        firestore_refresh_v3: "true",
-        keychain_access_retries: "true",
-        blocked_users_cached_sync_enabled: "true",
-        beta_features_enabled: "true",
-        join_testflight_enabled: "true",
-        safety_center: "true",
-        help_center: "true",
-        support_v2: "true",
-        privacy_choices_setting: "true",
-        request_att_permission: "true",
-        invite_link_preview_variant: "4",
-        share_history_config: JSON.stringify({ prompt_enabled: false, fetching_enabled: true }),
-        share_history_prompt_enabled: "false",
-        use_thumbnails_for_sharing: "true",
-        use_thumbnails_in_timeline: "true",
-        persist_onboarding_step: "true",
-        onboarding_contact_permission_step: "true"
-    });
-
-    // ============================================================
-    // 8. OVERLAY & CUSTOM CAPTIONS
-    // ============================================================
-   
-          Object.assign(obj.entries, {
+  var anhtu4nnGold = {
+        auto_resume_date: null,
+        display_name: "locket_1600_1y",
+        is_sandbox: true,
+        ownership_type: "PURCHASED",
+        billing_issues_detected_at: null,
+        management_url: "https://apps.apple.com/account/subscriptions",
+        period_type: "normal",
+        price: {
+            "amount": 399000.0,
+            "currency": "VND"
+        },
+        expires_date: (__ANHTU4NN_POLICY__.goldExpiresAt || "9999-01-09T10:10:14Z"),
+        grace_period_expires_date: null,
+        refunded_at: null,
+        unsubscribe_detected_at: null,
+        original_purchase_date: (__ANHTU4NN_POLICY__.goldJoinedAt+"T10:10:15Z"),
+        purchase_date: (__ANHTU4NN_POLICY__.goldJoinedAt+"T10:10:14Z"),
+        store: "app_store",
+        store_transaction_id: "2000001108724193",
+    },
+    locketGold = {
+        grace_period_expires_date: null,
+        purchase_date: (__ANHTU4NN_POLICY__.goldJoinedAt+"T10:10:14Z"),
+        product_identifier: "locket_1600_1y",
+        expires_date: (__ANHTU4NN_POLICY__.goldExpiresAt || "9999-01-29T10:10:14Z")
+    };
+  const match = Object.keys(mapping).find(e => ua.includes(e));
+  
+  if (match) {
+    obj.subscriber = obj.subscriber || {};
+    obj.subscriber.subscriptions = obj.subscriber.subscriptions || {};
+    obj.subscriber.entitlements = obj.subscriber.entitlements || {};
+  
+    obj.Attention = "Chúc mừng bạn! Vui lòng không bán hoặc chia sẻ cho người khác!";
+  
+    let [e, s] = mapping[match];
+    s ? (locketGold.product_identifier = s, obj.subscriber.subscriptions[s] = anhtu4nnGold) : obj.subscriber.subscriptions["locket_1600_1y"] = anhtu4nnGold, obj.subscriber.entitlements[e] = locketGold
+  }
+  $done({
+    body: JSON.stringify(obj)
+  });
+} else if (/^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\//.test(url)) {
+  // Badge & Config
+  var requestUrl = String($request.url || "");
+  var obj = JSON.parse($response.body);
+  
+  if (requestUrl.includes("/v1/projects/locket-4252a/")) {
+  
+      obj.Attention = "Chúc mừng bạn! Vui lòng không bán hoặc chia sẻ cho người khác!";
+      obj.entries = obj.entries || {};
+  
+      const originalEntries = { ...obj.entries };
+      // ============================================================
+      // 1. CẤU HÌNH GOLD, FEATURE GATES & PAYWALL
+      // ============================================================
+      Object.assign(obj.entries, {
+          feature_gates: JSON.stringify({
+              app_icon_picker: "enabled",
+              camera_roll: "enabled",
+              camera_theme: "enabled",
+              locket_views: "enabled",
+              long_captions: "enabled",
+              longer_video: "enabled",
+              unlimited_friends: "enabled",
+              priority_support: "enabled",
+              profile_badge: "enabled",
+              remove_ads: "enabled",
+              video: "enabled",
+              custom_widget_frames: "enabled",
+              streak_recovery: "enabled"
+          }),
+          upsell_features: JSON.stringify({
+              app_icon_picker: true,
+              camera_roll: true,
+              camera_theme: true,
+              locket_views: true,
+              remove_ads: true,
+              custom_widget_frames: true
+          }),
+          paywall_presentation_config: JSON.stringify({
+              uid: "paywall_testflight",
+              onboarding: false,
+              after_sent_moment: false,
+              on_foreground: false,
+              interval: 2592000,
+              profile_banner: true
+          }),
+          feature_discovery_popup_config: JSON.stringify({
+              tag: "LOCKET GOLD",
+              tag_gradient: true,
+              tag_style: "gold_gradient",
+              title: "Lên Locket Gold rồi nè",
+              feature_set: [
+                  {
+                      title: "Ig: @_anhtu4n_",
+                      body: "Call me by tún, cần hỗ trợ cứ alo=))",
+                      imageURL: "https://i.ibb.co/RTm5P1n9/kitty-1.png"
+                  }
+              ],
+              primary_button_title: "Xong",
+              campaign: "locket_gold_welcome_v3",
+              start_at: "2020-01-01T00:00:00",
+              end_at: "2099-12-31T23:59:59",
+              use_local_time_zone: true
+          }),
+          android_subscribe_gold_button_enabled: "false",
+          profile_badge_visible: "true",
+          lunar_new_year_app_icon_enabled: "true",
+          settings_instagram_url: "https://www.instagram.com/_anhtu4n_/",
+          settings_tiktok_url: "https://tiktok.com/@_anhtu4n_"
+      });
+  
+      // ============================================================
+      // 2. CHẶN QUẢNG CÁO & TẮT TRACKING (SENTRY)
+      // ============================================================
+      Object.assign(obj.entries, {
+          history_ads_mode: "off",
+          history_ads_prefetch_count: "0",
+          history_ads_prefetch_immediate: "false",
+          history_ads_prefetch_reroute: "false",
+          history_ads_dynamic_insertion: "false",
+          history_ads_refresh_prefetch_on_foreground: "false",
+          history_ads_floor_price: "0",
+          history_ads_floor_price_att: "0",
+          history_ad_log_displayed_on_background: "false",
+          history_ads_debug_menu: "false",
+          sentry_sample_rate: "0",
+          sentry_network_tracing: "false",
+          sentry_performance_tracking: "false",
+          sentry_trace_sample_rate: "0",
+          sentry_profiles_sample_rate: "0"
+      });
+  
+      // ============================================================
+      // 3. CAMERA, VIDEO, FILTERS & UPLOAD QUALITY
+      // ============================================================
+      Object.assign(obj.entries, {
+          camera: JSON.stringify({
+              gold_max_duration: 30.0,
+              goldMaxDuration: 30.0,
+              max_duration: 30.0,
+              maxDuration: 30.0,
+              ultra_wide: true,
+              ultraWide: true,
+              volume_button: true,
+              volumeButton: true,
+              flash_button: true,
+              telephoto: true,
+              srgb: true,
+              lanczos: true,
+              quality_mbps: 0.6,
+              qualityMbps: 0.6
+          }),
+          camera_roll: JSON.stringify({
+              gold_max_duration: 30.0,
+              goldMaxDuration: 30.0,
+              video_max_duration: 30.0,
+              videoMaxDuration: 30.0,
+              max_duration: 30.0,
+              maxDuration: 30.0,
+              trim_max_duration: 30.0,
+              trimMaxDuration: 30.0,
+              camera_roll_max_duration: 30.0,
+              quality_mbps: 0.6,
+              qualityMbps: 0.6,
+              flash_button: true
+          }),
+          live_photos: JSON.stringify({
+              capture: true,
+              viewing: true,
+              catch_up: true,
+              widget_looping_mode: "always"
+          }),
+          camera_filter_config: JSON.stringify({
+              allows_custom_filters: true,
+              show_filter_button: true,
+              sheet_enabled: true,
+              open_sheet_immediately: true,
+              sheet_filters: [
+                  { title: { en: "Goofy" }, filter_ids: ["okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows"] },
+                  { title: { en: "Looks" }, filter_ids: ["bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns", "tatted", "mohawk", "braces", "bye_brows"] },
+                  { title: { en: "Celebrate" }, filter_ids: ["slimed", "princess", "disco_lights", "cash_money", "happy_birthday"] },
+                  { title: { en: "Cute" }, filter_ids: ["cutesy", "sticker_face", "flower_crown", "love_bug"] },
+                  { title: { en: "Costumes" }, filter_ids: ["wedding", "cowboy_cowgirl", "giraffe", "clown"] },
+                  { title: { en: "Holidays" }, filter_ids: ["easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun", "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"] }
+              ],
+              picker_filters: [
+                  "okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows",
+                  "bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns",
+                  "tatted", "mohawk", "braces", "slimed", "princess",
+                  "disco_lights", "cash_money", "happy_birthday", "cutesy", "sticker_face",
+                  "flower_crown", "love_bug", "wedding", "cowboy_cowgirl", "giraffe",
+                  "clown", "easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun",
+                  "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"
+              ]
+          }),
+          camera_roll_preview_enabled: "true",
+          camera_roll_video_enabled: "true",
+          camera_roll_video_upload_enabled: "true",
+          internal_camera_roll_video_upload_enabled: "true",
+          longer_camera_roll_videos_enabled: "true",
+          camera_roll_video_max_duration: "30.0",
+          camera_roll_max_duration: "30.0",
+          camera_roll_duration: "30.0",
+          max_video_duration: "30.0",
+          video_max_duration: "30.0",
+          video_trim_max_duration: "30.0",
+          trim_max_duration: "30.0",
+          gold_max_duration: "30.0",
+          goldMaxDuration: "30.0",
+          video_quality_mbps: "0.6",
+          video_sound_enabled: "true",
+          microphone_enabled: "true",
+          camera_microphone_enabled: "true",
+          audio_session_deactivation_enabled: "true",
+          zoom_enabled: "true",
+          upload_main_image_quality: "0.8",
+          upload_main_image_size: "1440",
+          upload_thumbnail_image_quality: "0.8",
+          upload_thumbnail_image_size: "1020"
+      });
+  
+      // ============================================================
+      // 4. BẠN BÈ, GIỚI HẠN & ĐỀ XUẤT KẾT BẠN
+      // ============================================================
+      Object.assign(obj.entries, {
+          max_friends_count: "999999",
+          friend_limit_mode: "0",
+          soft_friend_limit_threshold_count: "999999",
+          show_friend_limit_on_cam: "false",
+          signup_max_friends_count: "999999",
+          celebrity_inbox_limit: "999999",
+          friend_limit_geo_override: JSON.stringify({ experiments: {}, area_code_overrides: {} }),
+          friends_sheet_locket_count_config: JSON.stringify({
+              items: [
+                  { threshold: 0, icon_name: "heart" },
+                  { threshold: 1, icon_name: "heart.fill" },
+                  { threshold: 10, emoji: "🤍" },
+                  { threshold: 100, emoji: "💛" },
+                  { threshold: 500, emoji: "❤️‍🔥" },
+                  { threshold: 1000, emoji: "🌟🫶🌟" },
+                  { threshold: 2000, emoji: "✨💟✨" },
+                  { threshold: 5000, emoji: "⚡️😵‍💫⚡" },
+                  { threshold: 10000, emoji: "✨⚡️😱⚡✨" }
+              ]
+          }),
+          friend_locket_count_config: JSON.stringify({
+              items: [
+                  { threshold: 0, icon_name: "heart" },
+                  { threshold: 1, icon_name: "heart.fill" },
+                  { threshold: 10, emoji: "🤍" },
+                  { threshold: 100, emoji: "💛" },
+                  { threshold: 500, emoji: "❤️‍🔥" },
+                  { threshold: 1000, emoji: "✨💗✨" },
+                  { threshold: 2000, emoji: "✨️⭐️✨" },
+                  { threshold: 5000, emoji: "✨💎✨" },
+                  { threshold: 10000, emoji: "✨🔐💛✨" }
+              ]
+          }),
+          new_friends_monitoring_enabled: "true",
+          improved_friend_suggestions: "true",
+          show_friend_suggestions_by_default: "true",
+          emoji_friend_suggestions: "true",
+          prompt_contact_permissions_on_search: "true",
+          populate_phone_numbers_from_suggest_friends: "true",
+          hide_friends_enabled: "true",
+          hide_invite_links: "false",
+          hide_skip_contacts: "true",
+          show_all_contacts: "true",
+          show_invite_suggestions: "true",
+          show_no_friends_bottom_sheet: "false",
+          signup_allow_skip_add_friends: "true"
+      });
+  
+      // ============================================================
+      // 5. MOMENTS, STREAK, CHAT & TƯƠNG TÁC
+      // ============================================================
+      try {
+          var streak = JSON.parse(obj.entries.streak_config || "{}");
+          streak.minimum_recovery_count = 0;
+          streak.minimum_display_count = 0;
+          obj.entries.streak_config = JSON.stringify(streak);
+      } catch (e) {}
+  
+      Object.assign(obj.entries, {
+          moment_views_enabled: "true",
+          moment_views_v2: "true",
+          record_moment_views: "true",
+          notify_moment_views: "true",
+          get_moment_views_as_cloud_function: "true",
+          moment_reactions_v2: "true",
+          chat_reactions_enabled: "true",
+          conversation_reactions: "true",
+          typing_indicators_enabled: "true",
+          unsend_message_enabled: "true",
+          reply_prototype_enabled: "true",
+          messages_integration: "true",
+          conversations_enabled: "true",
+          fetch_moments_in_conversation: "true",
+          hide_chat_button: "false",
+          groups_enabled: "true",
+          send_to_self_only_mode: "always_enabled",
+          time_travel_rewind_v2_enabled: "true",
+          calendar_delete_moment_enabled: "true",
+          calendar_rewind_enabled: "false",
+          locket_yearbook_story_sharing_encouraged: "true",
+          rollcall_enabled: "true",
+          rollcall_comment_actions: "true",
+          rollcall_profile_button: "true",
+          rollcall_prompt_export_after_share: "true",
+          rollcall_confirm_skip_tagging: "false",
+          rollcall_tap_to_tag_enabled: "false"
+      });
+  
+      // ============================================================
+      // 6. WIDGET, THÔNG BÁO & GIAO DIỆN (JOURNAL / PROFILE)
+      // ============================================================
+      Object.assign(obj.entries, {
+          widget_frame_event_max_images: "5",
+          android_widget_frame_event_enabled: "true",
+          widget_badge_enabled: "true",
+          widget_badge_v2: "true",
+          widget_stale_state_enabled: "false",
+          widget_last_sent_indicator: "false",
+          widget_sync_token_reload_mode: "clearTokenNever",
+          widget_frame_event: JSON.stringify({
+              uid: "anhtu4nn_ig_2026",
+              // url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
+              url: "https://i.ibb.co/RTm5P1n9/kitty-1.png",
+              use_local_time_zone: true,
+              placement: "below",
+              start_at: "2020-01-01T00:00:00",
+              end_at: "2099-12-31T23:59:59"
+          }),
+          live_activity_onboarding: "true",
+          live_activity_onboarding_variant: "friending",
+          register_live_activity_push_to_start_token: "true",
+          live_activity_remove_stale_start_token: "true",
+          notification_preferences_live_activities: "true",
+          notification_preferences: "true",
+          notification_reply_body_visible: "true",
+          prompt_notification_permissions_after_friending: "true",
+          activity_bar_enabled: "true",
+          journal_activity_bar_enabled: "true",
+          journal_settings: JSON.stringify({
+              debug_menu_enabled: false,
+              focus_animation: false,
+              compact_header: true,
+              friends_button: false,
+              reverse_scroll_direction: false,
+              streak_visualization: true,
+              streak_visualization_style: "gradient",
+              streak_header_minimum_count: 0,
+              streak_visualization_minimum_count: 2,
+              overlay_indicators: { location: false, music: true, static_content: true, weather: true }
+          }),
+          qr_code_config: JSON.stringify({ profile_enabled: true, scanning_enabled: true }),
+          custom_profile_pics: "true",
+          profile_menu_v2_enabled: "true"
+      });
+  
+      // ============================================================
+      // 7. HỆ THỐNG, CACHE & STORAGE CDN
+      // ============================================================
+      Object.assign(obj.entries, {
+          cdn_domain_replacements: JSON.stringify({ "firebasestorage.googleapis.com": "cdn.locketcamera.com" }),
+          cdn_domain_replacements_video: "true",
+          storage_bucket: "gs://locket-img",
+          storage_bucket_video: "gs://locket-video",
+          image_cache_max_age_sec: "157680000",
+          image_cache_max_size: "400000000",
+          history_cache_age_days: "1000",
+          user_cache_max_age_sec: "60",
+          friends_cache_max_age_sec: "60",
+          image_fetch_cache: "true",
+          image_cache_use_shared: "true",
+          use_doc_dir_for_image_cache: "true",
+          efficient_history_cache_invalidation: "true",
+          timestamp_based_history_fetches: "true",
+          get_latest_moment_v2: "true",
+          fetch_users_from_cloud_function: "true",
+          refresh_interval: "60",
+          firestore_refresh_v2: "true",
+          firestore_refresh_v3: "true",
+          keychain_access_retries: "true",
+          blocked_users_cached_sync_enabled: "true",
+          beta_features_enabled: "true",
+          join_testflight_enabled: "true",
+          safety_center: "true",
+          help_center: "true",
+          support_v2: "true",
+          privacy_choices_setting: "true",
+          request_att_permission: "true",
+          invite_link_preview_variant: "4",
+          share_history_config: JSON.stringify({ prompt_enabled: false, fetching_enabled: true }),
+          share_history_prompt_enabled: "false",
+          use_thumbnails_for_sharing: "true",
+          use_thumbnails_in_timeline: "true",
+          persist_onboarding_step: "true",
+          onboarding_contact_permission_step: "true"
+      });
+  
+      // ============================================================
+      // 8. OVERLAY & CUSTOM CAPTIONS
+      // ============================================================
+      Object.assign(obj.entries, {
           overlay_navigator_enabled: "true",
           overlays_v2_config: JSON.stringify({ suggestions_enabled: true }),
           captions_enabled: "true",
@@ -667,16 +824,178 @@ if (ua.includes("Locket")) {
                     { overlay_id: "caption:be_ngoan", source: "remote", caption: { background: { colors: ["#E9B9C5", "#D9A4B3"] }, icon: { data: "checkmark.seal.fill", type: "sf_symbol" }, max_lines: 1, text: "Đã xác nhận bạn là bé ngoan", text_color: "#FFFFFF", type: "static_content" } },
                     { overlay_id: "caption:tuyen_duong", source: "remote", caption: { background: { colors: ["#D94A77", "#B82D59"] }, icon: { data: "checkmark.seal.fill", type: "sf_symbol" }, max_lines: 1, text: "Locket tuyên dương bạn cute", text_color: "#FFFFFF", type: "static_content" } },
                   ]
-              },
-            {
-          section: "🎖 tlocvnn",
+              }
+          ])
+      });
+      
+      // ===== BAO TOAN CAU HINH GOC =====
+  
+      function readConfig(value) {
+          try {
+              var parsed = typeof value === "string"
+                  ? JSON.parse(value)
+                  : value;
+  
+              return parsed &&
+                  typeof parsed === "object" &&
+                  !Array.isArray(parsed)
+                  ? parsed
+                  : {};
+          } catch (e) {
+              return {};
+          }
+      }
+  
+      // Ghep cac truong moi vao cau hinh cu.
+      // Khong xoa cac khoa khong duoc tuy chinh.
+      [
+          "feature_gates",
+          "upsell_features",
+          "camera",
+          "camera_roll",
+          "live_photos",
+          "journal_settings",
+          "qr_code_config",
+          "overlays_v2_config"
+      ].forEach(function (key) {
+          if (Object.prototype.hasOwnProperty.call(obj.entries, key)) {
+              var original = readConfig(originalEntries[key]);
+              var customized = readConfig(obj.entries[key]);
+  
+              obj.entries[key] = JSON.stringify({
+                  ...original,
+                  ...customized
+              });
+          }
+      });
+  
+      // ===== GOP FILTER VA CAPTION: GIU BAN GOC + NOI DUNG TU THEM =====
+      // Neu trung ID, ban tuy chinh duoc uu tien; cac ID khac duoc giu nguyen.
+      function readArray(value) {
+          try {
+              var parsed = typeof value === "string" ? JSON.parse(value) : value;
+              return Array.isArray(parsed) ? parsed : [];
+          } catch (e) {
+              return [];
+          }
+      }
+  
+      function uniqueStrings(left, right) {
+          return Array.from(new Set(left.concat(right).filter(function (x) {
+              return typeof x === "string";
+          })));
+      }
+  
+      function mergeItemsById(originalItems, customItems, idKey) {
+          var result = originalItems.slice();
+          var indexes = new Map();
+          result.forEach(function (item, index) {
+              if (item && typeof item[idKey] === "string") {
+                  indexes.set(item[idKey], index);
+              }
+          });
+          customItems.forEach(function (item) {
+              if (!item || typeof item !== "object") return;
+              var id = item[idKey];
+              if (typeof id === "string" && indexes.has(id)) {
+                  var i = indexes.get(id);
+                  result[i] = { ...result[i], ...item };
+              } else {
+                  if (typeof id === "string") indexes.set(id, result.length);
+                  result.push(item);
+              }
+          });
+          return result;
+      }
+  
+      // Camera filters: giu cac tuy chon goc, bo sung nhom/filter moi.
+      var originalFilters = readConfig(originalEntries.camera_filter_config);
+      var customFilters = readConfig(obj.entries.camera_filter_config);
+      var originalSheets = Array.isArray(originalFilters.sheet_filters) ? originalFilters.sheet_filters : [];
+      var customSheets = Array.isArray(customFilters.sheet_filters) ? customFilters.sheet_filters : [];
+      var mergedSheets = originalSheets.slice();
+      var sheetIndexes = new Map();
+      function sheetKey(sheet) {
+          return sheet && sheet.title ? JSON.stringify(sheet.title) : null;
+      }
+      mergedSheets.forEach(function (sheet, index) {
+          var key = sheetKey(sheet);
+          if (key !== null) sheetIndexes.set(key, index);
+      });
+      customSheets.forEach(function (sheet) {
+          if (!sheet || typeof sheet !== "object") return;
+          var key = sheetKey(sheet);
+          if (key !== null && sheetIndexes.has(key)) {
+              var index = sheetIndexes.get(key);
+              var previous = mergedSheets[index];
+              mergedSheets[index] = {
+                  ...previous,
+                  ...sheet,
+                  filter_ids: uniqueStrings(
+                      Array.isArray(previous.filter_ids) ? previous.filter_ids : [],
+                      Array.isArray(sheet.filter_ids) ? sheet.filter_ids : []
+                  )
+              };
+          } else {
+              if (key !== null) sheetIndexes.set(key, mergedSheets.length);
+              mergedSheets.push(sheet);
+          }
+      });
+      obj.entries.camera_filter_config = JSON.stringify({
+          ...originalFilters,
+          ...customFilters,
+          sheet_filters: mergedSheets,
+          picker_filters: uniqueStrings(
+              Array.isArray(originalFilters.picker_filters) ? originalFilters.picker_filters : [],
+              Array.isArray(customFilters.picker_filters) ? customFilters.picker_filters : []
+          )
+      });
+  
+      // Caption: ket hop theo ten nhom, ket hop items theo overlay_id.
+      var originalGroups = readArray(originalEntries.overlay_items);
+      var customGroups = readArray(obj.entries.overlay_items);
+      var mergedGroups = originalGroups.slice();
+      var groupIndexes = new Map();
+      mergedGroups.forEach(function (group, index) {
+          if (group && typeof group.section === "string") {
+              groupIndexes.set(group.section, index);
+          }
+      });
+      customGroups.forEach(function (group) {
+          if (!group || typeof group !== "object") return;
+          if (typeof group.section === "string" && groupIndexes.has(group.section)) {
+              var index = groupIndexes.get(group.section);
+              var previous = mergedGroups[index];
+              mergedGroups[index] = {
+                  ...previous,
+                  ...group,
+                  items: mergeItemsById(
+                      Array.isArray(previous.items) ? previous.items : [],
+                      Array.isArray(group.items) ? group.items : [],
+                      "overlay_id"
+                  )
+              };
+          } else {
+              if (typeof group.section === "string") groupIndexes.set(group.section, mergedGroups.length);
+              mergedGroups.push(group);
+          }
+      });
+      obj.entries.overlay_items = JSON.stringify(mergedGroups);
+      obj.entries.overlay_dynamic_captions = JSON.stringify(uniqueStrings(
+          readArray(originalEntries.overlay_dynamic_captions),
+          readArray(obj.entries.overlay_dynamic_captions)
+      ));
+      // ===== THU NGHIEM CAPTION TRANG TRI: KHONG PHAI GOLD CHINH THUC =====
+      // Chi THEM 2 caption vao nhom rieng; khong thay widget/profile/video.
+      var localBadgeGroup = {
+          section: "🎖 tlocbavai",
           items: [
               {
-                  overlay_id: "caption:tloc_decor_gold",
+                  overlay_id: "caption:tlocvn_decor_gold",
                   source: "remote",
                   caption: {
                       type: "static_content",
-                      text: "✦ tắn lọc ✦",
+                      text: "✦ Tloccuti ✦",
                       background: { colors: ["#FDE9A1", "#D6A22C"] },
                       icon: { type: "emoji", data: "🏅" },
                       max_lines: 1,
@@ -684,11 +1003,11 @@ if (ua.includes("Locket")) {
                   }
               },
               {
-                  overlay_id: "caption:tắn nọc ",
+                  overlay_id: "caption:Tloc_decor_winter",
                   source: "remote",
                   caption: {
                       type: "static_content",
-                      text: "❄ Tloccuti🫪 ❄",
+                      text: "❄ Tanlocvn ❄",
                       background: { colors: ["#C7E9FF", "#83BBF7"] },
                       icon: { type: "emoji", data: "❄️" },
                       max_lines: 1,
@@ -697,6 +1016,156 @@ if (ua.includes("Locket")) {
               }
           ]
       };
-      
-$done({ body: JSON.stringify(obj) });
-                            
+      var badgeOverlayGroups = readArray(obj.entries.overlay_items);
+      var localBadgeIndex = badgeOverlayGroups.findIndex(function (group) {
+          return group && group.section === localBadgeGroup.section;
+      });
+      if (localBadgeIndex >= 0) {
+          var oldBadgeGroup = badgeOverlayGroups[localBadgeIndex];
+          badgeOverlayGroups[localBadgeIndex] = {
+              ...oldBadgeGroup,
+              items: mergeItemsById(
+                  Array.isArray(oldBadgeGroup.items) ? oldBadgeGroup.items : [],
+                  localBadgeGroup.items, "overlay_id"
+              )
+          };
+      } else {
+          badgeOverlayGroups.push(localBadgeGroup);
+      }
+      obj.entries.overlay_items = JSON.stringify(badgeOverlayGroups);
+
+      // ===== THU NGHIEM HUY HIEU GOLD: CHI BO SUNG CAC CO HIEN THI =====
+      // Cac khoa nay co the khong duoc phien ban Locket hien tai su dung.
+      Object.assign(obj.entries, {
+          gold_badge_profile_menu: "true",
+          gold_since_badge: "true",
+          gold_since_badge_enabled: "true",
+          locket_gold_badge: "true",
+          locket_gold_badge_small: "true",
+          profile_badge_enabled: "true",
+          profile_badge_visible: "true",
+          profile_gold_badge: "true"
+      });
+  
+  }
+  
+  $done({ body: JSON.stringify(obj) });
+ } else if (/^https:\/\/(api\.locketcamera\.com|us-central1-locket-4252a\.cloudfunctions\.net)\/(?:[^?#]*\/)?(fetchUserV2|getUserByUsername|changeProfileInfo|updateUser|createUser)(?:[/?#]|$)/.test(url)) {
+  // LOCAL BADGE DISPLAY, NOT A SERVER-SIDE PURCHASE OR ACCOUNT CHANGE.
+  // Every machine that wants the display must install this module.
+  // Never badge 'the logged-in user' or the local RevenueCat UID:
+  // on a friend's phone, that is the FRIEND, not @_anhtu4n_.
+  try {
+    // EDIT ONLY THESE TWO ARRAYS to designate the user(s) you want badged.
+    // Explicit Locket profile UID, NOT RevenueCat anonymous user ID.
+    const VIP_UIDS = [
+      // "PASTE_EXACT_LOCKET_PROFILE_UID_HERE"
+    ];
+    // Locket handle(s): lowercase, WITHOUT @. Keep UID above when the name changes.
+    const VIP_USERNAMES = __ANHTU4NN_POLICY__.badgeUsernames;
+
+    const normalizeUsername = function (s) {
+      return (typeof s === "string" ? s : "").trim().replace(/^@/, "").toLowerCase();
+    };
+    const normalizedNames = VIP_USERNAMES.map(normalizeUsername).filter(Boolean);
+    const nameSet = new Set(normalizedNames);
+    const uidSet = new Set(VIP_UIDS.map(function (v) { return String(v || "").trim(); }).filter(Boolean));
+    const store = (typeof $persistentStore !== "undefined") ? $persistentStore : null;
+
+    // Learn a UID only from an object whose username matches an explicit VIP name.
+    // This is safe when the same module runs on a friend's device.
+    const cacheKey = function (username) { return "LOCKET_VIP_UID_FOR_" + username; };
+    if (store) {
+      normalizedNames.forEach(function (name) {
+        const cached = store.read(cacheKey(name));
+        if (cached) uidSet.add(String(cached).trim());
+      });
+    }
+
+    const rawBody = $response && $response.body;
+    const httpStatus = String(($response && ($response.status || $response.statusCode)) || "");
+    const statusMatch = httpStatus.match(/\b([1-5]\d\d)\b/);
+    if (typeof rawBody !== "string" || !rawBody.trim() ||
+        (statusMatch && Number(statusMatch[1]) >= 300)) {
+      $done({});
+    } else {
+      const data = JSON.parse(rawBody);
+      const resultStatus = data && data.result && data.result.status;
+      if (typeof resultStatus === "number" && resultStatus >= 300) {
+        $done({});
+      } else {
+        // Optional username confirmation for getUserByUsername requests.
+        // Use only if the response contains one user and that user has no username.
+        let lookupUsername = "";
+        const urlPath = url.split("?")[0].split("#")[0];
+        if (/\/getUserByUsername\/?$/.test(urlPath) &&
+            $request && typeof $request.body === "string") {
+          try {
+            const requestBody = JSON.parse($request.body);
+            lookupUsername = normalizeUsername(
+              (requestBody.data && requestBody.data.username) || requestBody.username
+            );
+          } catch (_) {}
+        }
+
+        const targets = [];
+        let nodesVisited = 0;
+        function visit(value, depth) {
+          if (!value || typeof value !== "object" || depth > 7 || ++nodesVisited > 4000) return;
+          if (Array.isArray(value)) {
+            value.forEach(function (item) { visit(item, depth + 1); });
+            return;
+          }
+          // A profile must have a Locket uid and/or username.
+          if ((typeof value.uid === "string" && value.uid.trim()) ||
+              (typeof value.username === "string" && value.username.trim())) {
+            targets.push(value);
+          }
+          ["result", "data", "user", "users", "friends", "profile", "profiles", "items", "results"].forEach(function (key) {
+            if (value[key] && typeof value[key] === "object") visit(value[key], depth + 1);
+          });
+        }
+        visit(data, 0);
+
+        let changes = 0;
+        const isSingleLookup = lookupUsername && nameSet.has(lookupUsername) && targets.length === 1;
+        targets.forEach(function (target) {
+          const uid = typeof target.uid === "string" ? target.uid.trim() : "";
+          const username = normalizeUsername(target.username);
+          const matchesUsername = !!username && nameSet.has(username);
+          const matchesUid = !!uid && uidSet.has(uid);
+          // Trusted lookup fallback only if response omitted username.
+          const matchesLookup = !username && !!uid && isSingleLookup;
+          if (!(matchesUsername || matchesUid || matchesLookup)) return;
+
+          if (uid && (matchesUsername || matchesLookup)) {
+            uidSet.add(uid);
+            if (store) store.write(uid, cacheKey(matchesUsername ? username : lookupUsername));
+          }
+          // Do not replace the profile, the user's name, friends, posts or responses.
+          // The actual Locket profile payload is known to use `badge`.
+          target.badge = "locket_gold";
+          target.is_gold = true;
+          target.gold_badge = true;
+          if (Array.isArray(target.badges)) {
+            if (!target.badges.includes("locket_gold")) target.badges.push("locket_gold");
+          } else if (target.badges === undefined || target.badges === null) {
+            target.badges = ["locket_gold"];
+          }
+          ++changes;
+        });
+        $done(changes ? { body: JSON.stringify(data) } : {});
+      }
+    }
+  } catch (e) {
+    // Fail open: invalid JSON/unexpected responses should be passed through.
+    $done({});
+  }
+} else {
+  $done({});
+}
+
+      })();
+    }catch(e){pass();}
+  });}catch(e){pass();}
+})();
