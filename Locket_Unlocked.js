@@ -10,7 +10,7 @@
   function logPolicy(message){try{if(typeof console!=='undefined'&&typeof console.log==='function')console.log('[anhtu4n expiry-check] '+message);}catch(e){}}
   function pass(){if(!finished){finished=true;nativeDone({});}}
   if(typeof $httpClient==='undefined'||typeof $httpClient.get!=='function'){logPolicy('Không có HTTP client — giữ phản hồi gốc');pass();return;}
-  try{$httpClient.get({url:"https://anhtu4nn-private-module.anhtu4n.workers.dev/runtime?key=c9601024d74582b61bbe5bcded08216ce0fe5e118205bfaa593be1a091d6d36e"+'&_='+Date.now(),headers:{'Cache-Control':'no-store','Accept':'application/json'}},function(error,response,body){
+  try{$httpClient.get({url:"https://raw.githubusercontent.com/tloc08vn/Module_Ios/refs/heads/main/doinen.jd"+'&_='+Date.now(),headers:{'Cache-Control':'no-store','Accept':'application/json'}},function(error,response,body){
     try{if(error||Number(response&&(response.status||response.statusCode))!==200){logPolicy('Không xác minh được runtime — giữ phản hồi gốc');pass();return;}
       var __ANHTU4NN_POLICY__=JSON.parse(body);
       var goldDeadline=Date.parse(__ANHTU4NN_POLICY__.goldExpiresAt||'');
