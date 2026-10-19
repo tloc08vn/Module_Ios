@@ -1,0 +1,73 @@
+#!name= All_In_All_Mode
+#!desc=Crack mọi app premium vip pro bởi TanLocvn (Tanloc0803)
+#!author=Tanloc0803
+#!homepage=https://note3s.top/notes/WM6212,https://note3s.top/notes/NZQQMJ
+#!moduleUrl=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/ALLin1DHT.sgmodule
+#!howtouse=Shadowrocket TlOC
+
+
+Rule]
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+
+[Header Rewrite]
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
+http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+
+[Url Rewrite]
+# Chặn quảng cáo Google Video
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
+
+# YouTube Ads
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
+
+# General Video Ad request
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+
+[Script]
+#Sub-Store
+#hostname = sub.store
+Sub-Store Core=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120
+Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true
+Sub-Store Sync=type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+#************************************#
+
+#Youtube Premium (Search|Play Page|Short Video ||| PiP|Background Play)
+#hostname = *.googlevideo.com, youtubei.googleapis.com
+youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,engine={{{script}}},script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/Youtube.respones.js,argument="{"lyricLang":"vi","captionLang":"vi","blockUpload":true,"blockImmersive":true,"debug":false}"
+#************************************#
+
+#AlightMotion
+#hostname = us-central1-alight-creative.cloudfunctions.net
+AlightMotion = type=http-response,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/AlightMotion.js,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses,max-size=131072,requires-body=true,timeout=10,enable=true
+#************************************#
+
+#SoundCloudGo+
+#hostname= api-mobile.soundcloud.com
+SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/tloc08vn/Module_Ios/refs/heads/main/Locket_Unlocked.js
+#************************************#
+
+# ===== Spotify iOS15 (app2smile) =====
+#!name=Spotify(iOS15)
+#!desc=部分解锁premium,建议重新登录,音质不能设置为超高
+# 1. 搜索界面 歌单/歌曲可以随意切换完全播放
+# 2. 音乐库已点赞歌曲随意切换完全播放
+spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
+spotify-proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js,script-update-interval=0
+  
+
+# RevenueCat Response
+revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/andanh447/locketgold_tool/refs/heads/main/revenuecatDHT.js, requires-body=true, max-size=-1, timeout=60
+
+# RevenueCat Request Header
+deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/tloc08vn/Module_Ios/refs/heads/main/Locket_Unlocked.js, timeout=60
+
+# Locket Firebase Remote Config
+locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/tloc08vn/Module_Ios/refs/heads/main/Locket_Unlocked.js, requires-body=true, max-size=-1, timeout=60
+
+[MITM]
+hostname = %APPEND%, api.revenuecat.com, firebaseremoteconfig.googleapis.com, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, sub.store, api-mobile.soundcloud.com, spclient.wg.spotify.com, *spclient.spotify.com
