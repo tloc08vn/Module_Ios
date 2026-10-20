@@ -787,8 +787,2588 @@ overlay_id: "caption:locket_đã_xác_nhận_bạn_đẹp_trai🫪",
                     }
                 ]
             },
+                       {
+                section: "🎨 Tình yêu & Cơm chó 💕",
+                items: [
+                    {
+                        "overlay_id": "caption:bogo_sipeo",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D8E8FC", "#82B1FF"] },
+                            icon: { data: "🥺", type: "emoji" },
+                            max_lines: 1,
+                            text: "보고 싶어",
+                            text_color: "#1A2238E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:em_nho_anhh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F48FB1", "#F8BBD0"] },
+                            icon: { data: "🥺", type: "emoji" },
+                            max_lines: 1,
+                            text: "em nhớ anhh",
+                            text_color: "#4A1C24E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nho_anh_hoi_phien",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E6CEEA", "#F5E6F7"] },
+                            icon: { data: "🥺", type: "emoji" },
+                            max_lines: 1,
+                            text: "nhớ anh tới mức hơi phiền",
+                            text_color: "#3B2840E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:i_love_you",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F4A8C0", "#FCE4EC"] },
+                            icon: { data: "💗", type: "emoji" },
+                            max_lines: 1,
+                            text: "i love you",
+                            text_color: "#4A2030E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:yeu_cuc_dang",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F5B0C4", "#FDF0E6"] },
+                            icon: { data: "🎀", type: "emoji" },
+                            max_lines: 1,
+                            text: "yêu cục dàng",
+                            text_color: "#4A2530E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:yeu_emmm",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E2BDD2", "#F7EBF2"] },
+                            icon: { data: "💗", type: "emoji" },
+                            max_lines: 1,
+                            text: "Yeu Emmm",
+                            text_color: "#3D2232E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:yeu_anhhh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B8D0F5", "#EAE0F8"] },
+                            icon: { data: "🫶", type: "emoji" },
+                            max_lines: 1,
+                            text: "Yeu Anhhh",
+                            text_color: "#222B45E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:baby_love",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F08CA8", "#E91E8C"] },
+                            icon: { data: "🧸", type: "emoji" },
+                            max_lines: 1,
+                            text: "Baby Love 💖",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:muon_duoc_om",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F28B82", "#FAD2E1"] },
+                            icon: { data: "🫂", type: "emoji" },
+                            max_lines: 1,
+                            text: "Muốn được ôm",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cho_hun_mieng_coi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F2BCC2", "#FCE6D8"] },
+                            icon: { data: "😘", type: "emoji" },
+                            max_lines: 1,
+                            text: "cho hun miếng coi",
+                            text_color: "#4A2E2EE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:me_anh_hon_me_ngu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B5C4F0", "#EADCF2"] },
+                            icon: { data: "💤", type: "emoji" },
+                            max_lines: 1,
+                            text: "mê anh hơn mê ngủ",
+                            text_color: "#2C3248E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:em_be_can_duoc_do",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#DF8A9E", "#FCE0EA"] },
+                            icon: { data: "🎀", type: "emoji" },
+                            max_lines: 1,
+                            text: "em bé cần được dỗ",
+                            text_color: "#4A202AE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:iu_thi_noi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F9C449", "#FDF0C8"] },
+                            icon: { data: "🤭", type: "emoji" },
+                            max_lines: 1,
+                            text: "iu thì nói, đừng có ngại",
+                            text_color: "#4A360CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:iu_hong_thi_bao",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F26878", "#FCD0BA"] },
+                            icon: { data: "🎀", type: "emoji" },
+                            max_lines: 1,
+                            text: "iu hong thì bảo",
+                            text_color: "#4A181EE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:anh_co_thuong_em",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#8CB8F8", "#E0F2FC"] },
+                            icon: { data: "🥹", type: "emoji" },
+                            max_lines: 1,
+                            text: "anh có thương em thiệt hong",
+                            text_color: "#183258E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:yeu_em_la_nhiem_vu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#A2E0B8", "#E8F8EE"] },
+                            icon: { data: "🫡", type: "emoji" },
+                            max_lines: 1,
+                            text: "yêu em là nhiệm vụ cả đời",
+                            text_color: "#1C4028E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:crush_nhin_em",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#CFA2E8", "#F2E4F9"] },
+                            icon: { data: "🫠", type: "emoji" },
+                            max_lines: 1,
+                            text: "crush nhìn em một cái là xong",
+                            text_color: "#382045E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:anh_la_ngoai_le",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#74C6BE", "#DCF4F0"] },
+                            icon: { data: "🫶", type: "emoji" },
+                            max_lines: 1,
+                            text: "anh là ngoại lệ của em",
+                            text_color: "#163B38E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dang_ban_tuong_tu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#2B3A8A", "#15B8C4"] },
+                            icon: { data: "💭", type: "emoji" },
+                            max_lines: 1,
+                            text: "Đang bận tương tư",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:mac_bay_tinh_yeu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F48B94", "#FCE1E4"] },
+                            icon: { data: "💘", type: "emoji" },
+                            max_lines: 1,
+                            text: "Mắc bẫy tình yêu",
+                            text_color: "#1A1A1AE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hong_ay_minh_cuoi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D8A8C0", "#F2E4F5"] },
+                            icon: { data: "💍", type: "emoji" },
+                            max_lines: 1,
+                            text: "hông ấy mình cưới nhau đi",
+                            text_color: "#382635E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:wedding_time",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F8CCD8", "#EC6095"] },
+                            icon: { data: "💍", type: "emoji" },
+                            max_lines: 1,
+                            text: "Wedding Time!",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dating_time",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D91E5B", "#F25C3B"] },
+                            icon: { data: "💕", type: "emoji" },
+                            max_lines: 1,
+                            text: "Dating Time!",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tuong_love_hoa_ra_lop",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D41442", "#F7A1B5"] },
+                            icon: { data: "❤️‍🩹", type: "emoji" },
+                            max_lines: 1,
+                            text: "Tưởng love hoá ra lốp",
+                            text_color: "#2B0912E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:feeling_happy",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E03E7A", "#F7B5CD"] },
+                            icon: { data: "🇻🇳", type: "emoji" },
+                            max_lines: 1,
+                            text: "Feeling Happy",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    }
+                ]
+            },
             {
-                section: "🌸 Độc lạ",
+                section: "🎨 Gen Z & Xéo xắt 💅",
+                items: [
+                    {
+                        "overlay_id": "caption:feeling_cute",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F4A2B8", "#D91B68"] },
+                            icon: { data: "🌷", type: "emoji" },
+                            max_lines: 1,
+                            text: "Feeling Cute",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cutie_pie",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F9D5E0", "#F28AA8"] },
+                            icon: { data: "🎀", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cutie Pie 🌸",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hello_kitty",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#FADCE6", "#F7B2C4"] },
+                            icon: { data: "🌸", type: "emoji" },
+                            max_lines: 1,
+                            text: "Hello Kitty 🐱",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ngoan_xinh_iu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#EED2E6", "#F8EBF4"] },
+                            icon: { data: "💗", type: "emoji" },
+                            max_lines: 1,
+                            text: "ngoan xinh iu của ai đây",
+                            text_color: "#4A3242E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:xinh_dep_tuyet_voi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#EC387B", "#867AE9"] },
+                            icon: { data: "💅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Xinh đẹp tuyệt vời",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hom_nay_cung_slay",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C5B4E3", "#F2D5E8"] },
+                            icon: { data: "✨", type: "emoji" },
+                            max_lines: 1,
+                            text: "hôm nay cũng slay",
+                            text_color: "#362B48E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tinh_hoa_hoi_tu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#FFE000", "#FF9000"] },
+                            icon: { data: "✨", type: "emoji" },
+                            max_lines: 1,
+                            text: "Tinh hoa hội tụ",
+                            text_color: "#1A1405E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:xinh_gai_an_phim_1",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F46B6B", "#EB3678"] },
+                            icon: { data: "💅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Xinh gái ấn phím 1",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:xinh_la_tai_nang",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F2C2D4", "#F7DFEA"] },
+                            icon: { data: "🎀", type: "emoji" },
+                            max_lines: 1,
+                            text: "xinh là một loại tài năng",
+                            text_color: "#4A2C38E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dep_trai_co_gi_sai",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F25C05", "#F9B800"] },
+                            icon: { data: "😎", type: "emoji" },
+                            max_lines: 1,
+                            text: "Đẹp trai có gì sai",
+                            text_color: "#1A0D00E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dep_khong_can_ly_do",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E2C2D8", "#F2E1ED"] },
+                            icon: { data: "🪞", type: "emoji" },
+                            max_lines: 1,
+                            text: "đẹp không cần lý do",
+                            text_color: "#422C3CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cha_nay_tu_luyen_ghe",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#A8EDE6", "#FED6E3"] },
+                            icon: { data: "🪞", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cha này tự luyến ghê",
+                            text_color: "#1A1A1AE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:phu_tinh_khong_phu_ban",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#7928CA", "#6A11CB"] },
+                            icon: { data: "🕶️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Phụ tình không phụ bản thân",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:main_character",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#DCC4F0", "#F7D9E8"] },
+                            icon: { data: "🎬", type: "emoji" },
+                            max_lines: 1,
+                            text: "main character của cuộc đời mình",
+                            text_color: "#3B2848E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:vibe_doc_nhat",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#7FD8F5", "#D4F7E8"] },
+                            icon: { data: "🪩", type: "emoji" },
+                            max_lines: 1,
+                            text: "vibe này ko phải ai cũng có",
+                            text_color: "#143B42E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:khong_hoan_hao_nhung_co_khi_chat",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F7B267", "#FCECC9"] },
+                            icon: { data: "😎", type: "emoji" },
+                            max_lines: 1,
+                            text: "không hoàn hảo nhưng có khí chất",
+                            text_color: "#4A2E10E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:sieu_cap_ba_khi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#EC2F64", "#F25C48"] },
+                            icon: { data: "🐉", type: "emoji" },
+                            max_lines: 1,
+                            text: "siêu cấp bá khí",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ba_khi_ngang_nguoc",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#94B4D4", "#D6CFE6"] },
+                            icon: { data: "😎", type: "emoji" },
+                            max_lines: 1,
+                            text: "bá khí ngang ngược",
+                            text_color: "#1E2838E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:du_ba_khi_chua",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C8B6E2", "#EDE4F7"] },
+                            icon: { data: "👑", type: "emoji" },
+                            max_lines: 1,
+                            text: "Đủ bá khí chưa?",
+                            text_color: "#322445E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:oach_xa_lach",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#137A63", "#22E47A"] },
+                            icon: { data: "🥬", type: "emoji" },
+                            max_lines: 1,
+                            text: "oách xà lách",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cung_cung_di",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D95B38", "#F9C46B"] },
+                            icon: { data: "🚀", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cũng cứng đi",
+                            text_color: "#38180AE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ra_duong_ne_moi_anh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#CFD6E6", "#EAEFF8"] },
+                            icon: { data: "🕶️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Ra đường nể mỗi anh",
+                            text_color: "#242B38E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nhin_la_biet_uy_tin",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#2B7A9E", "#2C3E58"] },
+                            icon: { data: "👌", type: "emoji" },
+                            max_lines: 1,
+                            text: "Nhìn là biết uy tín",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:flex_den_hoi_tho_cuoi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#2BC4A8", "#B2F7E2"] },
+                            icon: { data: "💎", type: "emoji" },
+                            max_lines: 1,
+                            text: "Flex đến hơi thở cuối",
+                            text_color: "#103830E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tui_khong_hon_thua",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#9E1F32", "#DC7A88"] },
+                            icon: { data: "😎", type: "emoji" },
+                            max_lines: 1,
+                            text: "tui không hơn thua, tui hơn hẳn",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tui_hon_hom_qua",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B8DCD2", "#E8EAD6"] },
+                            icon: { data: "🫶", type: "emoji" },
+                            max_lines: 1,
+                            text: "tui không hơn ai, tui hơn hôm qua",
+                            text_color: "#263832E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:khong_phai_gu_cua_tat_ca",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F2728C", "#FAD8C0"] },
+                            icon: { data: "💅", type: "emoji" },
+                            max_lines: 1,
+                            text: "không phải gu của tất cả, may ghê",
+                            text_color: "#4A1C24E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ua_tuong_minh_quan_trong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#7B78E8", "#C8C2F7"] },
+                            icon: { data: "💅", type: "emoji" },
+                            max_lines: 1,
+                            text: "ủa tưởng mình quan trọng lắm hả",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cai_net_ky_ghe",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C6E472", "#EAF5C8"] },
+                            icon: { data: "😒", type: "emoji" },
+                            max_lines: 1,
+                            text: "cái nết kỳ ghê",
+                            text_color: "#2C3810E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nau_xoi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B2D942", "#F2FCC8"] },
+                            icon: { data: "🙀", type: "emoji" },
+                            max_lines: 1,
+                            text: "Nấu xói",
+                            text_color: "#223008E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:am_cha_hui",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F2C2D4", "#EDE2F5"] },
+                            icon: { data: "🎀", type: "emoji" },
+                            max_lines: 1,
+                            text: "ăm chã húi, bà chã hơm",
+                            text_color: "#4A2C3CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hong_drama",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#A82890", "#F76B1C"] },
+                            icon: { data: "🍿", type: "emoji" },
+                            max_lines: 1,
+                            text: "Hóng drama",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ke_chuyen_nghe_choi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#8A2482", "#E83858"] },
+                            icon: { data: "🍿", type: "emoji" },
+                            max_lines: 1,
+                            text: "Kể chuyện nghe chơi",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:than_ai_nay_lo",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F2C49B", "#E2D8EC"] },
+                            icon: { data: "🍿", type: "emoji" },
+                            max_lines: 1,
+                            text: "thân ai nấy lo, drama ai nấy hóng",
+                            text_color: "#3D2E24E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:check_var_lien",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#20A882", "#32E078"] },
+                            icon: { data: "📺", type: "emoji" },
+                            max_lines: 1,
+                            text: "Check VAR liền",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:co_bien_co_bien",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F24E1E", "#FFC814"] },
+                            icon: { data: "🚨", type: "emoji" },
+                            max_lines: 1,
+                            text: "Có biến có biến",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:so_ho_la_bao",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F5B895", "#F7E2E2"] },
+                            icon: { data: "🚨", type: "emoji" },
+                            max_lines: 1,
+                            text: "sơ hở là báo",
+                            text_color: "#4A281CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:bot_bao_gium_cai",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#82B2D4", "#DCEBF5"] },
+                            icon: { data: "🚨", type: "emoji" },
+                            max_lines: 1,
+                            text: "bớt báo giùm cái",
+                            text_color: "#1C3042E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ai_so_thi_di_ve",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C81E14", "#F25C24"] },
+                            icon: { data: "🏃", type: "emoji" },
+                            max_lines: 1,
+                            text: "ai sợ thì đi về",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:chay_ngay_di",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C81428", "#EB3252"] },
+                            icon: { data: "🏃💨", type: "emoji" },
+                            max_lines: 1,
+                            text: "Chạy ngay đi",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:len_chua_khong_biet_lay_ai",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D8D4CE", "#F2EFE9"] },
+                            icon: { data: "🙏🥹", type: "emoji" },
+                            max_lines: 1,
+                            text: "lên chùa không biết lạy ai",
+                            text_color: "#38322CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dam_nhau_khong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D92B2B", "#F57642"] },
+                            icon: { data: "🥊", type: "emoji" },
+                            max_lines: 1,
+                            text: "đấm nhau không",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hao_han",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#383058", "#D98A2B"] },
+                            icon: { data: "🗡️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Hảo hán",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:mong_ton_hoa_sen",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C8A8E2", "#F7C8D8"] },
+                            icon: { data: "🪷", type: "emoji" },
+                            max_lines: 1,
+                            text: "Mong tôn hoa sen thấy cảnh này",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:con_cai_nit",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C8C4C0", "#A87C68"] },
+                            icon: { data: "🧶", type: "emoji" },
+                            max_lines: 1,
+                            text: "còn cái nịt",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:minh_la_lop",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#2B4248", "#425258"] },
+                            icon: { data: "🛞", type: "emoji" },
+                            max_lines: 1,
+                            text: "Mình là lốp",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hay_ra_de_qua",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F5F095", "#95E2C8"] },
+                            icon: { data: "🥹", type: "emoji" },
+                            max_lines: 1,
+                            text: "Hay ra dẻ quá à!",
+                            text_color: "#1A241CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:mac_co_qua_hai_oi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F5A642", "#F7C6C8"] },
+                            icon: { data: "😭", type: "emoji" },
+                            max_lines: 1,
+                            text: "Mắc cỡ quá hai ơi",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:than_chua_ma_don",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#587488", "#485862"] },
+                            icon: { data: "😔", type: "emoji" },
+                            max_lines: 1,
+                            text: "Thân chưa mà dỡn",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ua_roi_ai_muon",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#EE7B30", "#FAD074"] },
+                            icon: { data: "🤨", type: "emoji" },
+                            max_lines: 1,
+                            text: "ủa rồi ai mượn?",
+                            text_color: "#381E08E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:co_ra_dai_khong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#EC5868", "#F9C89B"] },
+                            icon: { data: "😭", type: "emoji" },
+                            max_lines: 1,
+                            text: "có ra dại không",
+                            text_color: "#3D1418E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:he_dieu_hanh_khac",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#4A8E7A", "#B2DCD0"] },
+                            icon: { data: "🤨", type: "emoji" },
+                            max_lines: 1,
+                            text: "bạn mình nhưng hệ điều hành khác",
+                            text_color: "#102820E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ai_roi_cung_khac",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#383C42", "#788088"] },
+                            icon: { data: "🤡", type: "emoji" },
+                            max_lines: 1,
+                            text: "ai rồi cũng khác, riêng bạn thì...",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tuong_gi_hoa_ra_tuong_tuong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#5C82E6", "#C2D8F7"] },
+                            icon: { data: "🤡", type: "emoji" },
+                            max_lines: 1,
+                            text: "tưởng gì, hóa ra tưởng tượng",
+                            text_color: "#142038E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:be_hong_co_sai",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F2B8C6", "#F7E2EC"] },
+                            icon: { data: "😏", type: "emoji" },
+                            max_lines: 1,
+                            text: "bé hông có sai, tại đời sai",
+                            text_color: "#4A242EE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:song_sao_cho_vua_long",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C8A248", "#F7E6B2"] },
+                            icon: { data: "😏", type: "emoji" },
+                            max_lines: 1,
+                            text: "sống sao cho vừa lòng thiên hạ",
+                            text_color: "#382A0CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:boc_trung_sit_rit",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#982498", "#581888"] },
+                            icon: { data: "🎁", type: "emoji" },
+                            max_lines: 1,
+                            text: "Bóc trúng sít rịt",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hen_lam_moi_xui",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#42B8B8", "#207888"] },
+                            icon: { data: "😅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Hên lắm mới xui được vậy á",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ghet_dua_kia_ghe",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#485468", "#9EB0C8"] },
+                            icon: { data: "😒", type: "emoji" },
+                            max_lines: 1,
+                            text: "ghét đứa kia ghê 😒",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:khong_ghet_chi_khong_ua",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F29E38", "#FCE2B2"] },
+                            icon: { data: "😒", type: "emoji" },
+                            max_lines: 1,
+                            text: "không ghét, chỉ không ưa",
+                            text_color: "#3D2408E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:toi_song_the_day",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#282C34", "#707888"] },
+                            icon: { data: "😎", type: "emoji" },
+                            max_lines: 1,
+                            text: "Tôi sống thế đấy",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:che_manh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F23838", "#F9B824"] },
+                            icon: { data: "👎", type: "emoji" },
+                            max_lines: 1,
+                            text: "Chê mạnh",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:chua_du_wow",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E698A8", "#FADCE2"] },
+                            icon: { data: "🎀", type: "emoji" },
+                            max_lines: 1,
+                            text: "Chưa đủ wow",
+                            text_color: "#4A2830E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:roi_let_luon",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F7A8C8", "#B8C6F7"] },
+                            icon: { data: "💅", type: "emoji" },
+                            max_lines: 1,
+                            text: "rồi lét luôn",
+                            text_color: "#1A1424E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:roi_gay_luon",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C838F0", "#28C8F5"] },
+                            icon: { data: "🌈", type: "emoji" },
+                            max_lines: 1,
+                            text: "rồi gay luôn",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    }
+                ]
+            },
+            {
+                section: "🎨 Meme & Hài hước 🤡",
+                items: [
+                    {
+                        "overlay_id": "caption:cuoi_vcl_m_oi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#FF8C00", "#FFEE00"] },
+                            icon: { data: "😂", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cười vcl m oi",
+                            text_color: "#1A1200E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cuoi_xiu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#FFD000", "#FF8800"] },
+                            icon: { data: "😎", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cười xỉu",
+                            text_color: "#1A1000E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:luon_vui_tuoi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#00D2FF", "#3A7BD5"] },
+                            icon: { data: "🤡", type: "emoji" },
+                            max_lines: 1,
+                            text: "Luôn vui tươi",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:con_vien_la_lan",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#A8C2A0", "#DCE8D8"] },
+                            icon: { data: "🍂", type: "emoji" },
+                            max_lines: 1,
+                            text: "côn viên lá làn",
+                            text_color: "#283824E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:gian_dang_iu_hong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B8E6C8", "#F7F2C8"] },
+                            icon: { data: "🪳", type: "emoji" },
+                            max_lines: 1,
+                            text: "Gián đáng iu hong🎀",
+                            text_color: "#28382CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hen_lam_moi_xui_meme",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#00B4DB", "#0083B0"] },
+                            icon: { data: "😅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Hên lắm mới xui được vậy á",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:giam_suc_manh_con_tuong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#56AB2F", "#1CD8D2"] },
+                            icon: { data: "🎮", type: "emoji" },
+                            max_lines: 1,
+                            text: "Giảm sức mạnh con tướng",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:phu_huynh_dung_xem",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#FF0844", "#FFB199"] },
+                            icon: { data: "🙈", type: "emoji" },
+                            max_lines: 1,
+                            text: "Phụ huynh đừng xem",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:khong_van_de_gi_luon",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#1D976C", "#93F9B9"] },
+                            icon: { data: "👌", type: "emoji" },
+                            max_lines: 1,
+                            text: "Không vấn đề gì luôn",
+                            text_color: "#0F2E28E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:xin_vinh_biet_cu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#232526", "#414345"] },
+                            icon: { data: "🕯️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Xin vĩnh biệt cụ",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    }
+                ]
+            },
+            {
+                section: "🎨 Bất ổn & Hết cứu 🫠",
+                items: [
+                    {
+                        "overlay_id": "caption:bat_on_that_su",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#707A65", "#A8B068"] },
+                            icon: { data: "🫠", type: "emoji" },
+                            max_lines: 1,
+                            text: "Bất ổn thật sự",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nay_la_het_cuu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#607888", "#485862"] },
+                            icon: { data: "❌", type: "emoji" },
+                            max_lines: 1,
+                            text: "Này là hết cứu",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:het_cuu_thiet_chu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B2C2E8", "#E6D8EC"] },
+                            icon: { data: "🫠", type: "emoji" },
+                            max_lines: 1,
+                            text: "hết cứu thiệt chứ",
+                            text_color: "#242838E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:toi_cong_chuyen_nua_roi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E6AD94", "#F7DFE6"] },
+                            icon: { data: "💀", type: "emoji" },
+                            max_lines: 1,
+                            text: "tới công chuyện nữa rồi",
+                            text_color: "#3D2A24E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:toang_that_roi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#EB241E", "#B21814"] },
+                            icon: { data: "🐉", type: "emoji" },
+                            max_lines: 1,
+                            text: "Toang thật rồi",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:toi_roi_toi_roi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F53828", "#F9B248"] },
+                            icon: { data: "❗", type: "emoji" },
+                            max_lines: 1,
+                            text: "Tới rồi tới rồi",
+                            text_color: "#2B0C05E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:goi_xong_lun_a",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E8B2A6", "#F7DFE2"] },
+                            icon: { data: "😭", type: "emoji" },
+                            max_lines: 1,
+                            text: "gòi xong lun á",
+                            text_color: "#422824E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:xiu_ngang_xiu_doc",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B2AED8", "#EBD8EC"] },
+                            icon: { data: "💀", type: "emoji" },
+                            max_lines: 1,
+                            text: "xĩu ngang xĩu dọc",
+                            text_color: "#2C283CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:guc_nga",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#481878", "#B84268"] },
+                            icon: { data: "📉", type: "emoji" },
+                            max_lines: 1,
+                            text: "Gục ngã",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:bat_luc",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#204858", "#3898D4"] },
+                            icon: { data: "🏳️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Bất lực",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:rot_nuoc_mat",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#20A8C8", "#0A1868"] },
+                            icon: { data: "😭", type: "emoji" },
+                            max_lines: 1,
+                            text: "Rớt nước mắt",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tien_dinh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B81D58", "#2B1D68"] },
+                            icon: { data: "🌪️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Tiền đình",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nao_dang_bao_tri",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B8DCD2", "#DCE6F2"] },
+                            icon: { data: "🧠", type: "emoji" },
+                            max_lines: 1,
+                            text: "não đang bảo trì",
+                            text_color: "#263832E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:overthinking_vai_chuong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#425A68", "#388894"] },
+                            icon: { data: "🤯", type: "emoji" },
+                            max_lines: 1,
+                            text: "Overthinking vai chưởng",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tram_cam_nhe",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#322E38", "#686478"] },
+                            icon: { data: "🫠", type: "emoji" },
+                            max_lines: 1,
+                            text: "Trầm cảm nhẹ",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:khong_cam_xuc",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#2C2E30", "#121416"] },
+                            icon: { data: "🗿", type: "emoji" },
+                            max_lines: 1,
+                            text: "Không cảm xúc",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:mieng_cuoi_long_khoc",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#8CA8BE", "#DCE8F0"] },
+                            icon: { data: "🙂", type: "emoji" },
+                            max_lines: 1,
+                            text: "miệng cười nhưng lòng thì khóc",
+                            text_color: "#1E2C38E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hom_nay_toi_buon",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#1C2D3D", "#263B52"] },
+                            icon: { data: "🥀", type: "emoji" },
+                            max_lines: 1,
+                            text: "hôm nay tôi buồn",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dem_nay_ai_om_noi_buon",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#2A3E68", "#7B98B8"] },
+                            icon: { data: "🌙", type: "emoji" },
+                            max_lines: 1,
+                            text: "đêm nay ai ôm nỗi buồn",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:em_on_on_ap_luc",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F5A64C", "#FCE29C"] },
+                            icon: { data: "🥲", type: "emoji" },
+                            max_lines: 1,
+                            text: "em ổn, ổn áp lực",
+                            text_color: "#3D2408E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:thoi_thi_minh_lai_mot_minh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B2B8D8", "#E6DCE8"] },
+                            icon: { data: "🫂", type: "emoji" },
+                            max_lines: 1,
+                            text: "thôi thì mình lại một mình",
+                            text_color: "#282C40E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tui_la_nan_nhan",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E6B2C6", "#F7E6EC"] },
+                            icon: { data: "🥹", type: "emoji" },
+                            max_lines: 1,
+                            text: "tui là nạn nhân",
+                            text_color: "#422430E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:oi_ai_cuu_tui",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E8A89A", "#F7E2E0"] },
+                            icon: { data: "🆘", type: "emoji" },
+                            max_lines: 1,
+                            text: "òi ai cứu tui",
+                            text_color: "#42221CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:song_gio_phu_doi_trai",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#3E1E68", "#D46A7E"] },
+                            icon: { data: "🌪️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Sóng gió phủ đời trai",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:thuong_nguoi_khong_thuong_minh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B89EB8", "#E8D2E4"] },
+                            icon: { data: "💔", type: "emoji" },
+                            max_lines: 1,
+                            text: "thương người không thương mình",
+                            text_color: "#362436E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:lai_tu_minh_da_tinh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#6878A8", "#D4A8C4"] },
+                            icon: { data: "🫠", type: "emoji" },
+                            max_lines: 1,
+                            text: "lại tự mình đa tình",
+                            text_color: "#202438E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:chac_tai_minh_khong_du_tot",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#ACC2D4", "#DCD6E2"] },
+                            icon: { data: "🌧️", type: "emoji" },
+                            max_lines: 1,
+                            text: "chắc tại mình không đủ tốt",
+                            text_color: "#24303CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:mot_chut_hy_vong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#9E2A42", "#E6A898"] },
+                            icon: { data: "🥀", type: "emoji" },
+                            max_lines: 1,
+                            text: "một chút hy vọng, một đống thất vọng",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:het_duyen_hay_het_thuong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#3E5870", "#8298AC"] },
+                            icon: { data: "💭", type: "emoji" },
+                            max_lines: 1,
+                            text: "hết duyên hay hết thương?",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nguoi_vui_co_nho_nguoi_buon",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#5C6E78", "#B8C6CE"] },
+                            icon: { data: "🩶", type: "emoji" },
+                            max_lines: 1,
+                            text: "người vui có nhớ người buồn không",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:da_xem_chua_rep_da_dau",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#3878E8", "#A8D4F7"] },
+                            icon: { data: "📱", type: "emoji" },
+                            max_lines: 1,
+                            text: "đã xem, chưa rep, đã đau",
+                            text_color: "#102448E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dung_im_lang_voi_em_ma",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F2688A", "#FAD8E2"] },
+                            icon: { data: "🥹", type: "emoji" },
+                            max_lines: 1,
+                            text: "đừng im lặng với em mà",
+                            text_color: "#421824E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nho_thi_nho_quay_lai_thi_thoi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E6A238", "#F9E2A8"] },
+                            icon: { data: "🙂", type: "emoji" },
+                            max_lines: 1,
+                            text: "nhớ thì nhớ, quay lại thì thôi",
+                            text_color: "#382406E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:em_hong_co_doi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#8CB858", "#DCE8B8"] },
+                            icon: { data: "🥲", type: "emoji" },
+                            max_lines: 1,
+                            text: "em hong có dỗi, em chỉ buồn",
+                            text_color: "#203010E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:doi_roi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#EC5858", "#F7C288"] },
+                            icon: { data: "😤", type: "emoji" },
+                            max_lines: 1,
+                            text: "Dỗi rồi",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:thui_mu_dung_choc_be",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D8BED8", "#F5E8F2"] },
+                            icon: { data: "🥺", type: "emoji" },
+                            max_lines: 1,
+                            text: "thui mừ đừng có chọc bé",
+                            text_color: "#382638E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dung_co_lam_be_quao",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E68A48", "#F9DFB8"] },
+                            icon: { data: "😾", type: "emoji" },
+                            max_lines: 1,
+                            text: "đừng có làm bé quạo",
+                            text_color: "#381E0AE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:xin_lui_duoc_chua",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E6C668", "#F7C8A8"] },
+                            icon: { data: "🥺", type: "emoji" },
+                            max_lines: 1,
+                            text: "Xin lũi được chưa",
+                            text_color: "#1A1408E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:bic_goi_kho_lem",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E6825C", "#F7DCB8"] },
+                            icon: { data: "🥲", type: "emoji" },
+                            max_lines: 1,
+                            text: "bíc gòi khổ lém",
+                            text_color: "#381C10E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hong_be_oi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#82C6AC", "#DCECE2"] },
+                            icon: { data: "🥺", type: "emoji" },
+                            max_lines: 1,
+                            text: "hong bé ơi",
+                            text_color: "#18362CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:khum_co_bic_nua",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#5868B8", "#C8CEF2"] },
+                            icon: { data: "🫠", type: "emoji" },
+                            max_lines: 1,
+                            text: "khum có bíc nữa",
+                            text_color: "#161C38E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cai_deo_ma",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E86842", "#F7D29C"] },
+                            icon: { data: "🤬", type: "emoji" },
+                            max_lines: 1,
+                            text: "cái đéo má ??",
+                            text_color: "#38160AE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cai_gi_vay_troi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E84828", "#F9C478"] },
+                            icon: { data: "❗", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cái gì vậy trời",
+                            text_color: "#381006E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:khong_the_tin_noi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#3838C8", "#8884E8"] },
+                            icon: { data: "❓", type: "emoji" },
+                            max_lines: 1,
+                            text: "Không thể tin nổi",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:vl_m_oi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#384248", "#626E78"] },
+                            icon: { data: "😨", type: "emoji" },
+                            max_lines: 1,
+                            text: "vl m ơi?",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ua_alo_hoi_cham",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D99826", "#FCE89C"] },
+                            icon: { data: "🐱", type: "emoji" },
+                            max_lines: 1,
+                            text: "Ủa alo ❓",
+                            text_color: "#362404E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ua_alo_gi_da",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#1FA288", "#A2EED8"] },
+                            icon: { data: "😭", type: "emoji" },
+                            max_lines: 1,
+                            text: "Ủa alo, gì dạ?",
+                            text_color: "#0E342CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ho_hoi_cham",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E83E52", "#F7A888"] },
+                            icon: { data: "🤨", type: "emoji" },
+                            max_lines: 1,
+                            text: "hỏ?",
+                            text_color: "#380E12E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:noi_chuyen_nghe_mac_met",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#684878", "#C4A8D4"] },
+                            icon: { data: "🫠", type: "emoji" },
+                            max_lines: 1,
+                            text: "nói chuyện nghe mắc mệt",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dung_la_het_noi_noi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#688258", "#C8D8A8"] },
+                            icon: { data: "🙄", type: "emoji" },
+                            max_lines: 1,
+                            text: "đúng là hết nói nổi",
+                            text_color: "#1C2614E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:chan_bo_may_di",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#780A78", "#F26842"] },
+                            icon: { data: "🙄", type: "emoji" },
+                            max_lines: 1,
+                            text: "Chan bố mày đi",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:lai_phai_lo",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#74C6B8", "#E6F0A8"] },
+                            icon: { data: "🫠", type: "emoji" },
+                            max_lines: 1,
+                            text: "lại phải lọ",
+                            text_color: "#1A342CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tuyet_doi_khong_nghe",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#EB2868", "#F54828"] },
+                            icon: { data: "🙉", type: "emoji" },
+                            max_lines: 1,
+                            text: "Tuyệt đối không nghe",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:khong_biet_khong_thay",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C8DCD4", "#F7DFD4"] },
+                            icon: { data: "🙈", type: "emoji" },
+                            max_lines: 1,
+                            text: "không biết, không thấy, không nghe",
+                            text_color: "#2C3430E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:noi_it_thoi_lo_het",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#1E7888", "#94C8C0"] },
+                            icon: { data: "🤫", type: "emoji" },
+                            max_lines: 1,
+                            text: "nói ít thôi, lộ hết bây giờ",
+                            text_color: "#0C282CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nguoi_im_lang_gap_nguoi_hay_noi",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#2B3038", "#687482"] },
+                            icon: { data: "🤐", type: "emoji" },
+                            max_lines: 1,
+                            text: "Người im lặng gặp người hay nói",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:noi_het_bi_mat_co_yeu_hong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C4A8D8", "#DCE2F7"] },
+                            icon: { data: "🤭", type: "emoji" },
+                            max_lines: 1,
+                            text: "Nói hết bí mật thì có yêu hong",
+                            text_color: "#2C2436E6",
+                            type: "static_content"
+                        }
+                    }
+                ]
+            },
+            {
+                section: "🎨 Deadline & Tiền bạc 💸",
+                items: [
+                    {
+                        "overlay_id": "caption:deadline_di_tut_quan",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E61428", "#98241C"] },
+                            icon: { data: "🔥", type: "emoji" },
+                            max_lines: 1,
+                            text: "Deadline dí tụt quần",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:doi_cho_gi_nhan_nay",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F5D6A8", "#E8E2EC"] },
+                            icon: { data: "📚", type: "emoji" },
+                            max_lines: 1,
+                            text: "đời cho gì nhận nấy, trừ deadline",
+                            text_color: "#362A1CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:di_lam_vi_dam_me",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#FFB800", "#F26418"] },
+                            icon: { data: "🤡", type: "emoji" },
+                            max_lines: 1,
+                            text: "Đi làm vì đam mê",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ca_o_ran_doc",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#184824", "#48A842"] },
+                            icon: { data: "🐍", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cả ổ rắn độc",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:can_nap_cafein_gap",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#162834", "#284858"] },
+                            icon: { data: "☕", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cần nạp cafein gấp",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tien_dau_ma_tieu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#18B878", "#38E088"] },
+                            icon: { data: "💸", type: "emoji" },
+                            max_lines: 1,
+                            text: "Tiền đâu mà tiêu",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:luc_nao_co_tien_moi_di",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#182830", "#24424A"] },
+                            icon: { data: "💸", type: "emoji" },
+                            max_lines: 1,
+                            text: "Lúc nào có tiền thì mới đi á",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:doc_so_tai_khoan",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#1878E8", "#18D2FF"] },
+                            icon: { data: "💳", type: "emoji" },
+                            max_lines: 1,
+                            text: "đọc số tài khoản",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:co_tien_lam_phien_thien_ha",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C8AD78", "#F7EBD2"] },
+                            icon: { data: "💰", type: "emoji" },
+                            max_lines: 1,
+                            text: "Có tiền làm phiền thiên hạ",
+                            text_color: "#362A14E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:co_tien_thi_noi_chuyen_tiep",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#0C7862", "#78CCB8"] },
+                            icon: { data: "💸", type: "emoji" },
+                            max_lines: 1,
+                            text: "có tiền thì nói chuyện tiếp",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:doc_lap_tai_chinh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C8D4C0", "#F2ECD8"] },
+                            icon: { data: "💰", type: "emoji" },
+                            max_lines: 1,
+                            text: "độc lập tài chính, độc thân tình cảm",
+                            text_color: "#2C3428E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cu_tu_tu_khoai_se_nhu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#68B828", "#98E058"] },
+                            icon: { data: "🥔", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cứ từ từ khoai sẽ nhừ",
+                            text_color: "#142404E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:kiem_tra_nhan_pham",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#6E58B8", "#E6ACC8"] },
+                            icon: { data: "🎲", type: "emoji" },
+                            max_lines: 1,
+                            text: "Kiểm tra nhân phẩm",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    }
+                ]
+            },
+            {
+                section: "🎨 Daily & Đời sống ☕",
+                items: [
+                    {
+                        "overlay_id": "caption:ngay_moi_vui_ve",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#FFB800", "#FCE89C"] },
+                            icon: { data: "☀️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Ngày mới vui vẻ",
+                            text_color: "#3D2800E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:coffee_time",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#4A3832", "#78584E"] },
+                            icon: { data: "☕", type: "emoji" },
+                            max_lines: 1,
+                            text: "Coffee Time!",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:matcha_latte",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#B8DEC0", "#82C882"] },
+                            icon: { data: "🍃", type: "emoji" },
+                            max_lines: 1,
+                            text: "Matcha Latte 🍵",
+                            text_color: "#1C4220E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:mixue_time",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#FCECC9", "#F7B8D2"] },
+                            icon: { data: "🍦", type: "emoji" },
+                            max_lines: 1,
+                            text: "Mixue Time!",
+                            text_color: "#24141AE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tien_khong_mua_duoc_tat_ca",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D8BC88", "#F7EFE0"] },
+                            icon: { data: "🧋", type: "emoji" },
+                            max_lines: 1,
+                            text: "tiền không mua được tất cả, nhưng mua được trà sữa",
+                            text_color: "#382C18E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:an_com_chua",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F28200", "#FF9800"] },
+                            icon: { data: "🍽️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Ăn cơm chưa?",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:dinner_time",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F28888", "#FAD4C8"] },
+                            icon: { data: "🍽️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Dinner Time!",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:di_choi_khong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E01860", "#C81858"] },
+                            icon: { data: "✈️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Đi chơi không?",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tuyet_voi_uong_nao",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F5CC88", "#F7D8C8"] },
+                            icon: { data: "🥂", type: "emoji" },
+                            max_lines: 1,
+                            text: "tuyệt vời, uống nào!",
+                            text_color: "#3D2C18E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:shopping_time",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#9CD8F7", "#EAF6FC"] },
+                            icon: { data: "🛍️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Shopping Time!",
+                            text_color: "#142430E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cinema_time",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#242878", "#385268"] },
+                            icon: { data: "🎬", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cinema Time!",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tuyet_doi_dien_anh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#283842", "#425864"] },
+                            icon: { data: "📷", type: "emoji" },
+                            max_lines: 1,
+                            text: "Tuyệt đối điện ảnh",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:qua_la_dien_anh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#189882", "#107868"] },
+                            icon: { data: "📷", type: "emoji" },
+                            max_lines: 1,
+                            text: "Quá là điện ảnh",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:locket_time",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E6F4F8", "#A8DCF0"] },
+                            icon: { data: "📷", type: "emoji" },
+                            max_lines: 1,
+                            text: "Locket Time!",
+                            text_color: "#102028E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:chilling_time",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D8A2C8", "#F2CEE6"] },
+                            icon: { data: "🌴", type: "emoji" },
+                            max_lines: 1,
+                            text: "Chilling Time!",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:happy_graduation_day",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#1E2488", "#283298"] },
+                            icon: { data: "🎓", type: "emoji" },
+                            max_lines: 1,
+                            text: "Happy Graduation Day!",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:hoi_chieu_troi_mua",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#486268", "#2B3C42"] },
+                            icon: { data: "🌧️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Hồi chiều trời mưa...",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:rainy_day",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#704E48", "#A89892"] },
+                            icon: { data: "☕", type: "emoji" },
+                            max_lines: 1,
+                            text: "Rainy Day ☕🌧️",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:cam_lanh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#32A2C8", "#68C8E6"] },
+                            icon: { data: "🤧", type: "emoji" },
+                            max_lines: 1,
+                            text: "Cảm lạnh",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nhin_bau_troi_da_ly_huong",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C8AAE2", "#A8B8E8"] },
+                            icon: { data: "🌌", type: "emoji" },
+                            max_lines: 1,
+                            text: "nhìn bầu trời màu dạ lý hương",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:night_vibes",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#9898D8", "#C8B8F2"] },
+                            icon: { data: "🪐", type: "emoji" },
+                            max_lines: 1,
+                            text: "Night Vibes 🌌",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:2am_thoughts",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#182830", "#284852"] },
+                            icon: { data: "💭", type: "emoji" },
+                            max_lines: 1,
+                            text: "2:00 AM Thoughts 🌙",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:ngu_ngon",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#243898", "#322878"] },
+                            icon: { data: "🌙", type: "emoji" },
+                            max_lines: 1,
+                            text: "Ngủ ngon",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:sweet_dream",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#94C4F7", "#DCEFFC"] },
+                            icon: { data: "☁️", type: "emoji" },
+                            max_lines: 1,
+                            text: "Sweet Dream 🧊",
+                            text_color: "#182C48E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nhiem_vu_he_thong_di_ngu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#28306E", "#6272C8"] },
+                            icon: { data: "🫡", type: "emoji" },
+                            max_lines: 1,
+                            text: "nhiệm vụ hệ thống: đi ngủ",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:da_den_luc_tat_nguon",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#363482", "#8C9EE8"] },
+                            icon: { data: "😴", type: "emoji" },
+                            max_lines: 1,
+                            text: "đã đến lúc tắt nguồn",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nao_nghi_lam_tay_van_online",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F26A1B", "#FAD27A"] },
+                            icon: { data: "🤡", type: "emoji" },
+                            max_lines: 1,
+                            text: "não nghỉ làm, tay vẫn online",
+                            text_color: "#381804E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:buon_ngu_nhung_chua_chiu_ngu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#8A2BE2", "#C8A8E8"] },
+                            icon: { data: "🫠", type: "emoji" },
+                            max_lines: 1,
+                            text: "buồn ngủ nhưng chưa chịu ngủ",
+                            text_color: "#220838E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:canh_bao_pin_nguoi_dung",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E02818", "#F5A638"] },
+                            icon: { data: "🚨", type: "emoji" },
+                            max_lines: 1,
+                            text: "cảnh báo: pin người dùng còn 1%",
+                            text_color: "#380A04E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:nhiem_vu_hom_nay_nam_im",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#288898", "#BCE698"] },
+                            icon: { data: "🛌", type: "emoji" },
+                            max_lines: 1,
+                            text: "nhiệm vụ hôm nay: nằm im",
+                            text_color: "#10282CE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:mai_tinh_nay_ngu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#383C42", "#889098"] },
+                            icon: { data: "💀", type: "emoji" },
+                            max_lines: 1,
+                            text: "mai tính, nay ngủ",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:offline_de_hoi_sinh",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#288890", "#B8DCD8"] },
+                            icon: { data: "💤", type: "emoji" },
+                            max_lines: 1,
+                            text: "offline để hồi sinh",
+                            text_color: "#0E2C30E6",
+                            type: "static_content"
+                        }
+                    }
+                ]
+            },
+            {
+                section: "🎨 Chứng nhận của Locket",
+                items: [
+                    {
+                        "overlay_id": "caption:locket_xac_nhan_cutii",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#1898D8", "#2CA8E8"] },
+                            icon: { data: "✅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Locket xác nhận bạn cutii",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:locket_xac_nhan_xjnh_gai",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#F5B828", "#FAD258"] },
+                            icon: { data: "✅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Locket xác nhận bạn xjnh gái",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:locket_xac_nhan_dep_chai",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#1878D8", "#2888E8"] },
+                            icon: { data: "✅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Locket xác nhận bạn đẹp chai",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:locket_xac_nhan_dangiu",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#E84268", "#F25878"] },
+                            icon: { data: "✅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Locket xác nhận bạn dangiu",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:da_xac_minh_gai_dep",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#EB6890", "#F582A8"] },
+                            icon: { data: "✅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Đã xác minh bạn là gái đẹp",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:da_xac_minh_trai_dep",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#2882D8", "#4298E8"] },
+                            icon: { data: "✅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Đã xác minh bạn là trai đẹp",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:da_xac_nhan_be_ngoan",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D498A8", "#E6B2C0"] },
+                            icon: { data: "✅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Đã xác nhận bạn là bé ngoan",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:locket_tuyen_duong_cute",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#C82858", "#D83868"] },
+                            icon: { data: "✅", type: "emoji" },
+                            max_lines: 1,
+                            text: "Locket tuyên dương bạn cute",
+                            text_color: "#FFFFFFE6",
+                            type: "static_content"
+                        }
+                    
+                    {
+                section: "🎖️ tlocbavl",
+                items: [
+                    {
+                        "overlay_id": "caption:Tloc_gold",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#D9A828", "#E8C868"] },
+                            icon: { data: "🏅", type: "emoji" },
+                            max_lines: 1,
+                            text: "✦ Tloc bá quá ✦",
+                            text_color: "#382804E6",
+                            type: "static_content"
+                        }
+                    },
+                    {
+                        "overlay_id": "caption:tloc_snow",
+                        source: "remote",
+                        caption: {
+                            background: { colors: ["#82B8F5", "#C2DCF9"] },
+                            icon: { data: "❄️", type: "emoji" },
+                            max_lines: 1,
+                            text: "❄️ Tlocvn ❄️",
+                            text_color: "#142C4CE6",
+                            type: "static_content"
+                        }
+                    }
+                    {
+           section: "🌸 Độc lạ",
                 items: [
                     {
                         overlay_id: "caption:xin_vinh_biet_cu",
