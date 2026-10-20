@@ -1,12 +1,12 @@
-#!name=TlocVn10
-#!desc=Được tổng hợp bởi Tấn Lộc
-#!author=TanLoc0803
+#!name=Tloc08
+#!desc=Được tổng hợp bởi Nguyenductanloc
+#!author=duyvinh09
 #!homepage=https://module-ios.netlify.app
 #!tgchannel=https://t.me/tienich
 #!configUrl=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/All_In_One.conf
 #!icon=https://module-ios.netlify.app/assets/img/shadowrocket.webp
 #!howtouse=Shadowrocket
-#Shadowrocket Configuration - TlocVn10
+#Shadowrocket Configuration - TanlocVn
 
 [General]
 bypass-system = true
@@ -109,7 +109,7 @@ BeautyPlus = type=http-response, pattern=https:\/\/(api\.mr\.pixocial\.com\/v1\/
 #hostname = api.revenuecat.com, firebaseremoteconfig.googleapis.com
 revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/Locket_DuyVinh09.js, requires-body=true, max-size=-1, timeout=60
 deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/deleteHeader.js, timeout=60
-locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/tloc08vn/Module_Ios/refs/heads/main/Locket_Unlocked.js, requires-body=true, max-size=-1, timeout=60
+locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/Locket_Unlocked.js, requires-body=true, max-size=-1, timeout=60
 #************************************#
 
 #RevenueCatVip
