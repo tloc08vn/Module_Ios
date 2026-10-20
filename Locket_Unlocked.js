@@ -3328,7 +3328,7 @@ overlay_id: "caption:locket_đã_xác_nhận_bạn_đẹp_trai🫪",
                             type: "static_content"
                         }
                     },
-                    {
+                                     {
                         "overlay_id": "caption:locket_tuyen_duong_cute",
                         source: "remote",
                         caption: {
@@ -3339,8 +3339,10 @@ overlay_id: "caption:locket_đã_xác_nhận_bạn_đẹp_trai🫪",
                             text_color: "#FFFFFFE6",
                             type: "static_content"
                         }
-                    
-                    {
+                    }
+                ]
+            },
+            {
                 section: "🎖️ tlocbavl",
                 items: [
                     {
@@ -3367,8 +3369,11 @@ overlay_id: "caption:locket_đã_xác_nhận_bạn_đẹp_trai🫪",
                             type: "static_content"
                         }
                     }
-                    {
-           section: "🌸 Độc lạ",
+                ]
+            },
+            {
+                section: "🌸 Độc lạ",
+
                 items: [
                     {
                         overlay_id: "caption:xin_vinh_biet_cu",
